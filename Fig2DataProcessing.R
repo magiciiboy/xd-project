@@ -80,11 +80,12 @@ processEdgesAndNodesPerYear <- function(year) {
   for (row in 1:nrow(df_nodes)) {
     gid <- as.character(df_nodes[row, "Id"])
     
-    xd <- (as.character(df_nodes[row, "Orientation"]) == 'XD')
-    node_coauthors <- getCoauthors(df_edges, gid)
-    node_orientation <- ifelse(xd, 'XD', getScholarOrientation(df_nodes, gid, node_coauthors))
     node_degree <- calculateNodeDegree(df_edges, gid)
     if( node_degree > 0 ) {
+      xd <- (as.character(df_nodes[row, "Orientation"]) == 'XD')
+      node_coauthors <- getCoauthors(df_edges, gid)
+      node_orientation <- ifelse(xd, 'XD', getScholarOrientation(df_nodes, gid, node_coauthors))
+      # Add node
       df_nodes_cleaned <- addAuthorNode(df_nodes_cleaned, gid, orientation=node_orientation, k=node_degree)
     }
   }
@@ -102,10 +103,10 @@ if (!DATA_SPLITTED_BY_YEARS) {
 }
 
 if (!DATA_PROCESSED_NODES_EDGES) {
-  # processEdgesAndNodesPerYear(1990)
-  # processEdgesAndNodesPerYear(1995)
-  # processEdgesAndNodesPerYear(2000)
-  # processEdgesAndNodesPerYear(2005)
-  # processEdgesAndNodesPerYear(2010)
+  processEdgesAndNodesPerYear(1990)
+  processEdgesAndNodesPerYear(1995)
+  processEdgesAndNodesPerYear(2000)
+  processEdgesAndNodesPerYear(2005)
+  processEdgesAndNodesPerYear(2010)
   processEdgesAndNodesPerYear(2015)
 }

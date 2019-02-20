@@ -15,8 +15,10 @@ getScholarInfo <- function(gid) {
 getCoauthors <- function(df, gid) {
   df_coauthors <- filter(df, Source == gid | Target == gid)
   if (nrow(df_coauthors) > 0) {
-    coauthors <- unique(c(as.vector(unique(df$Source)), as.vector(unique(df$Target))))
-    coauthors <- mapply(function(x) { return(x == gid) }, coauthors)
+    sources <- as.vector(unique(df_coauthors$Source))
+    targets <- as.vector(unique(df_coauthors$Target))
+    coauthors <- unique(c(sources, targets))
+    coauthors <- c(coauthors[coauthors != gid])
     return(coauthors)
   }
   return(NA)
@@ -45,7 +47,7 @@ getScholarOrientation <- function(df, gid, coauthors) {
   
   df_coauthors <- filter(df, Id %in% coauthors)
   depts <- as.vector(unique(df$Dept))
-  their_depts <- mapply(function(x) { return(x != my_dept) }, depts)
+  their_depts <- depts[depts != my_dept]
   
   if ( length(their_depts) > 0 ) {
     return("XD")
