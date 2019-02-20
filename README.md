@@ -10,3 +10,5 @@ Cross-disciplinary evolution of the genomics revolution
 `/gephi`: gephi project to build the graph
 
 `/output`: graph output
+
+`/report`: Sweave report
