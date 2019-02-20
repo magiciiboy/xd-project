@@ -5,7 +5,7 @@ Cross-disciplinary evolution of the genomics revolution
 
 `/data`: original datasets
 
-`/data/preprocessed`: preprocessed data to draw graph
+`/preprocessed`: preprocessed data to draw graph
 
 `/gephi`: gephi project to build the graph
 

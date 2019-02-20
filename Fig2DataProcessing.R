@@ -34,17 +34,17 @@ splitPapersByYear <- function() {
   colnames(df_papers_2010) <- cols
   colnames(df_papers_2015) <- cols
   
-  write.csv(df_papers_1990, './data/preprocessed/papers_year_1990.csv')
-  write.csv(df_papers_1995, './data/preprocessed/papers_year_1995.csv')
-  write.csv(df_papers_2000, './data/preprocessed/papers_year_2000.csv')
-  write.csv(df_papers_2005, './data/preprocessed/papers_year_2005.csv')
-  write.csv(df_papers_2010, './data/preprocessed/papers_year_2010.csv')
-  write.csv(df_papers_2015, './data/preprocessed/papers_year_2015.csv')
+  write.csv(df_papers_1990, './preprocessed/papers_year_1990.csv')
+  write.csv(df_papers_1995, './preprocessed/papers_year_1995.csv')
+  write.csv(df_papers_2000, './preprocessed/papers_year_2000.csv')
+  write.csv(df_papers_2005, './preprocessed/papers_year_2005.csv')
+  write.csv(df_papers_2010, './preprocessed/papers_year_2010.csv')
+  write.csv(df_papers_2015, './preprocessed/papers_year_2015.csv')
   return(T)
 }
 
 processEdgesAndNodesPerYear <- function(year) {
-  df_papers <- read.csv(paste0('./data/preprocessed/papers_year_', year, '.csv'))
+  df_papers <- read.csv(paste0('./preprocessed/papers_year_', year, '.csv'))
   
   df_nodes <- data.frame(matrix(ncol = 6, nrow = 0))
   colnames(df_nodes) <- c('Id', 'Label', 'Interval', 'Weight', 'Dept', 'Orientation')
@@ -90,8 +90,8 @@ processEdgesAndNodesPerYear <- function(year) {
   }
   
   # Save
-  write.csv(df_nodes_cleaned, paste0('./data/preprocessed/nodes_year_', year, '.csv'))
-  write.csv(df_edges, paste0('./data/preprocessed/edges_year_', year, '.csv'))
+  write.csv(df_nodes_cleaned, paste0('./preprocessed/nodes_year_', year, '.csv'))
+  write.csv(df_edges, paste0('./preprocessed/edges_year_', year, '.csv'))
   
   return(T)
 }
