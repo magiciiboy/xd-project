@@ -15,13 +15,11 @@ getScholarInfo <- function(gid) {
 getCoauthors <- function(df, gid) {
   df_coauthors <- filter(df, Source == gid | Target == gid)
   if (nrow(df_coauthors) > 0) {
-    sources <- as.vector(unique(df$Source))
-    targets <- as.vector(unique(df$Target))
-    coauthors <- unique(c(sources, targets))
+    coauthors <- unique(c(as.vector(unique(df$Source)), as.vector(unique(df$Target))))
     coauthors <- mapply(function(x) { return(x == gid) }, coauthors)
     return(coauthors)
   }
-  return NA
+  return(NA)
 }
 
 isCrossDisciplinaryByPollinators <- function(coauthors) {
@@ -42,13 +40,16 @@ getScholarOrientation <- function(df, gid, coauthors) {
   # gid:
   # coauthors: vector
   # return "CS", "BIO", "XD"
+  scholar <- filter(df, Id == gid)
+  my_dept <- as.character(scholar[1,]$Dept)
+  
   df_coauthors <- filter(df, Id %in% coauthors)
   depts <- as.vector(unique(df$Dept))
-  if ( "CS" %in% depts && "BIO" %in% depts ) {
+  their_depts <- mapply(function(x) { return(x != my_dept) }, depts)
+  
+  if ( length(their_depts) > 0 ) {
     return("XD")
   } else {
-    scholar <- filter(df, Id == gid)
-    ori <- as.character(scholar[1,]$Dept)
-    return(ori)
+    return(my_dept)
   }
 }
