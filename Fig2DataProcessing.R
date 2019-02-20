@@ -102,8 +102,8 @@ if (!DATA_SPLITTED_BY_YEARS) {
 }
 
 if (!DATA_PROCESSED_NODES_EDGES) {
-  processEdgesAndNodesPerYear(1990)
-  # processEdgesAndNodesPerYear(1995)
+  # processEdgesAndNodesPerYear(1990)
+  processEdgesAndNodesPerYear(1995)
   # processEdgesAndNodesPerYear(2000)
   # processEdgesAndNodesPerYear(2005)
   # processEdgesAndNodesPerYear(2010)
