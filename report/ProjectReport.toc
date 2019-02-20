@@ -1,0 +1,9 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Figure 2A}{3}
+\contentsline {section}{\numberline {2}Figure 2B}{4}
+\contentsline {section}{\numberline {3}Figure 3A}{5}
+\contentsline {section}{\numberline {4}Figure 3B}{6}
+\contentsline {section}{\numberline {5}Figure 3C}{7}
+\contentsline {section}{\numberline {6}Figure 3D}{8}
+\contentsline {section}{\numberline {7}Figure 3E}{9}
+\contentsline {section}{\numberline {8}Figure 3F}{10}

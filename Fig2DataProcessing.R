@@ -5,12 +5,9 @@
 # - Edges: (source, target, type, id, label, interval, weight)
 library(dplyr)
 
+source('./Fig2Config.R')
 source('./Fig2Scholar.R')
 source('./Fig2Graph.R')
-
-# Configurations
-DATA_SPLITTED_BY_YEARS = T # T: has been processed, F: not yet processed
-DATA_PROCESSED_NODES_EDGES = F
 
 # Functions
 splitPapersByYear <- function() {
@@ -54,25 +51,46 @@ processEdgesAndNodesPerYear <- function(year) {
   df_edges <- data.frame(matrix(ncol = 7, nrow = 0))
   colnames(df_edges) <- c('Source', 'Target', 'Type', 'Id', 'Label', 'Interval', 'Weight')
   
+  # Read papers and create nodes and edges
   for (row in 1:nrow(df_papers)) {
     gid <- as.character(df_papers[row, "google_id"])
     
     coauthor_codes <- as.character(df_papers[row, "coauthor_codes"])
     coauthors <- unlist(strsplit(coauthor_codes, ','))
-    # isXD = isCrossDisciplinary(coauthors)
+    isXD = isCrossDisciplinaryByPollinators(coauthors)
     
-    df_nodes <- addAuthorNode(df_nodes, gid)
+    orientation_xd = ifelse(isXD, 'XD', NA)
+    df_nodes <- addAuthorNode(df_nodes, gid, orientation = orientation_xd)
     
     # Directed author
     directed_coauthors = coauthors[coauthors != '0' & coauthors != '1' & coauthors != '2']
     for (row_dca in 1:length(directed_coauthors)) {
-      df_nodes <- addAuthorNode(df_nodes, directed_coauthors[row_dca])
-      df_edges <- addEdge(df_edges, gid_source=gid, gid_target=directed_coauthors[row_dca])
+      coauthor_gid <- directed_coauthors[row_dca]
+      if ( gid != coauthor_gid ) {
+        df_nodes <- addAuthorNode(df_nodes, coauthor_gid)
+        df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid)
+      }
+    }
+  }
+  
+  # Elimiate nodes having no edges
+  df_nodes_cleaned <- data.frame(matrix(ncol = 6, nrow = 0))
+  colnames(df_nodes_cleaned) <- c('Id', 'Label', 'Interval', 'Weight', 'Dept', 'Orientation')
+  
+  for (row in 1:nrow(df_nodes)) {
+    gid <- as.character(df_nodes[row, "Id"])
+    
+    xd <- (as.character(df_nodes[row, "Orientation"]) == 'XD')
+    node_coauthors <- getCoauthors(df_edges, gid)
+    node_orientation <- ifelse(xd, 'XD', getScholarOrientation(df_nodes, gid, node_coauthors))
+    node_degree <- calculateNodeDegree(df_edges, gid)
+    if( node_degree > 0 ) {
+      df_nodes_cleaned <- addAuthorNode(df_nodes_cleaned, gid, orientation=node_orientation, k=node_degree)
     }
   }
   
   # Save
-  write.csv(df_nodes, paste0('./data/preprocessed/nodes_year_', year, '.csv'))
+  write.csv(df_nodes_cleaned, paste0('./data/preprocessed/nodes_year_', year, '.csv'))
   write.csv(df_edges, paste0('./data/preprocessed/edges_year_', year, '.csv'))
   
   return(T)
@@ -84,10 +102,10 @@ if (!DATA_SPLITTED_BY_YEARS) {
 }
 
 if (!DATA_PROCESSED_NODES_EDGES) {
-  # processEdgesAndNodesPerYear(1990)
+  processEdgesAndNodesPerYear(1990)
   # processEdgesAndNodesPerYear(1995)
   # processEdgesAndNodesPerYear(2000)
   # processEdgesAndNodesPerYear(2005)
-  processEdgesAndNodesPerYear(2010)
+  # processEdgesAndNodesPerYear(2010)
   # processEdgesAndNodesPerYear(2015)
 }
