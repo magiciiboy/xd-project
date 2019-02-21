@@ -63,12 +63,20 @@ processEdgesAndNodesPerYear <- function(year) {
     df_nodes <- addAuthorNode(df_nodes, gid, orientation = orientation_xd)
     
     # Directed author
-    directed_coauthors = coauthors[coauthors != '0' & coauthors != '1' & coauthors != '2']
-    for (row_dca in 1:length(directed_coauthors)) {
+    directed_coauthors = coauthors[coauthors != '0' & coauthors != '1' & coauthors != '2' & coauthors != gid]
+    n_coauthors = length(directed_coauthors)
+    for (row_dca in 1:n_coauthors) {
       coauthor_gid <- directed_coauthors[row_dca]
-      if ( gid != coauthor_gid ) {
-        df_nodes <- addAuthorNode(df_nodes, coauthor_gid)
-        df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid)
+      # Add node and an edge to the falcuty
+      df_nodes <- addAuthorNode(df_nodes, coauthor_gid)
+      df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid)
+      
+      # Add edge between coauthors
+      if (n_coauthors > 1 && row_dca < n_coauthors) {
+        for (row_a_to_a in row_dca + 1:n_coauthors) {
+          next_coauthor_id <- directed_coauthors[row_a_to_a]
+          df_edges <- addEdge(df_edges, gid_source=coauthor_gid, gid_target=next_coauthor_id)
+        }
       }
     }
   }
@@ -104,9 +112,9 @@ if (!DATA_SPLITTED_BY_YEARS) {
 
 if (!DATA_PROCESSED_NODES_EDGES) {
   processEdgesAndNodesPerYear(1990)
-  processEdgesAndNodesPerYear(1995)
-  processEdgesAndNodesPerYear(2000)
-  processEdgesAndNodesPerYear(2005)
-  processEdgesAndNodesPerYear(2010)
-  processEdgesAndNodesPerYear(2015)
+  # processEdgesAndNodesPerYear(1995)
+  # processEdgesAndNodesPerYear(2000)
+  # processEdgesAndNodesPerYear(2005)
+  # processEdgesAndNodesPerYear(2010)
+  # processEdgesAndNodesPerYear(2015)
 }

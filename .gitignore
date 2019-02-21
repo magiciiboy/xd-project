@@ -2,3 +2,4 @@
 *.lot
 *.lof
 *.gz
+.Rproj.user

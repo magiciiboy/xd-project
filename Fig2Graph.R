@@ -1,6 +1,9 @@
 addAuthorNode <- function(df, gid, orientation=NA, k=1) {
   # Add new author node
   # 'Id', 'Label', 'Interval', 'Weight', 'Dept', 'Orientation'
+  if (!length(gid)) { return(df) }
+  if (is.null(gid)) { return(df) }
+
   scholar <- getScholarInfo(gid)
   existed <- (nrow(filter(df, Id == gid)) > 0)
   
