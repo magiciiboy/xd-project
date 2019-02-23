@@ -16,7 +16,7 @@ addAuthorNode <- function(df, gid, orientation=NA, k=1) {
   # Node Degree
   node_weight <- ifelse(k, k, 1)
   
-  if (!existed) {
+  if (!is.null(scholar) && !existed) {
     df[nrow(df) + 1,] <- list(
       node_id, 
       node_label, 
@@ -32,6 +32,10 @@ addAuthorNode <- function(df, gid, orientation=NA, k=1) {
 addEdge <- function(df, gid_source, gid_target) {
   # Add a collaboration edge
   # 'Source', 'Target', 'Type', 'Id', 'Label', 'Interval', 'Weight'
+  if (is.na(gid_source) || is.na(gid_target)) {
+    return(df)
+  }
+  
   edge_source <- gid_source
   edge_targe <- gid_target
   # Type: Direct / Mediated
@@ -41,7 +45,8 @@ addEdge <- function(df, gid_source, gid_target) {
   edge_interval <- ''
   edge_weight <- 1
   
-  existed <- (nrow(filter(df, Source == gid_source & Target == gid_target)) > 0)
+  existed <- (nrow(filter(df, (Source == gid_source & Target == gid_target) 
+                              | (Source == gid_target & Target == gid_source))) > 0)
   
   if (!existed) {
     df[nrow(df) + 1,] <- list(

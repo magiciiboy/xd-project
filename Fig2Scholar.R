@@ -46,7 +46,7 @@ getScholarOrientation <- function(df, gid, coauthors) {
   my_dept <- as.character(scholar[1,]$Dept)
   
   df_coauthors <- filter(df, Id %in% coauthors)
-  depts <- as.vector(unique(df$Dept))
+  depts <- as.vector(unique(df_coauthors$Dept))
   their_depts <- depts[depts != my_dept]
   
   if ( length(their_depts) > 0 ) {

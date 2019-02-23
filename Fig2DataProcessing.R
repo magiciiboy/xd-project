@@ -56,26 +56,35 @@ processEdgesAndNodesPerYear <- function(year) {
     gid <- as.character(df_papers[row, "google_id"])
     
     coauthor_codes <- as.character(df_papers[row, "coauthor_codes"])
-    coauthors <- unlist(strsplit(coauthor_codes, ','))
+    coauthors <- unique(strsplit(coauthor_codes, ',')[[1]])
     isXD = isCrossDisciplinaryByPollinators(coauthors)
     
     orientation_xd = ifelse(isXD, 'XD', NA)
     df_nodes <- addAuthorNode(df_nodes, gid, orientation = orientation_xd)
     
     # Directed author
-    directed_coauthors = coauthors[coauthors != '0' & coauthors != '1' & coauthors != '2' & coauthors != gid]
+    directed_coauthors = coauthors[coauthors != '0' 
+                                   & coauthors != '1'
+                                   & coauthors != '2' 
+                                   & coauthors != gid
+                                   & !is.na(coauthors)
+                                   & !is.null(coauthors)
+                                   & coauthors != '']
+    
     n_coauthors = length(directed_coauthors)
-    for (row_dca in 1:n_coauthors) {
-      coauthor_gid <- directed_coauthors[row_dca]
-      # Add node and an edge to the falcuty
-      df_nodes <- addAuthorNode(df_nodes, coauthor_gid)
-      df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid)
-      
-      # Add edge between coauthors
-      if (n_coauthors > 1 && row_dca < n_coauthors) {
-        for (row_a_to_a in row_dca + 1:n_coauthors) {
-          next_coauthor_id <- directed_coauthors[row_a_to_a]
-          df_edges <- addEdge(df_edges, gid_source=coauthor_gid, gid_target=next_coauthor_id)
+    if(n_coauthors) {
+      for (row_dca in 1:n_coauthors) {
+        coauthor_gid <- directed_coauthors[row_dca]
+        # Add node and an edge to the falcuty
+        df_nodes <- addAuthorNode(df_nodes, coauthor_gid)
+        df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid)
+        
+        # Add edge between coauthors
+        if (n_coauthors > 1 && row_dca < n_coauthors) {
+          for (row_a_to_a in row_dca + 1:n_coauthors) {
+            next_coauthor_id <- directed_coauthors[row_a_to_a]
+            df_edges <- addEdge(df_edges, gid_source=coauthor_gid, gid_target=next_coauthor_id)
+          }
         }
       }
     }
