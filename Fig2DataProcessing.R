@@ -10,7 +10,7 @@ source('./Fig2Scholar.R')
 source('./Fig2Graph.R')
 
 # Functions
-splitPapersByYear <- function() {
+splitPapersByYear <- function(bin=5) {
   # This function splits the data by published year of  
   # a paper. Base on those preprocessed sub-dataset we
   # will create nodes and edges for each year.
@@ -19,27 +19,17 @@ splitPapersByYear <- function() {
   # to a cross-disciplinary at the year of cross-disciplinary
   # paper has been published.
   df_papers = read.csv('./data/GoogleScholar_paper_stats.csv')
-  df_papers_1990 = filter(df_papers, X2014 <= 1990)
-  df_papers_1995 = filter(df_papers, X2014 <= 1995)
-  df_papers_2000 = filter(df_papers, X2014 <= 2000)
-  df_papers_2005 = filter(df_papers, X2014 <= 2005)
-  df_papers_2010 = filter(df_papers, X2014 <= 2010)
-  df_papers_2015 = filter(df_papers, X2014 <= 2015)
+  years = c(1990, 1995, 2000, 2005, 2010, 2015)
   
   cols <- c("google_id", "year", "citations", "coauthor_codes")
-  colnames(df_papers_1990) <- cols
-  colnames(df_papers_1995) <- cols
-  colnames(df_papers_2000) <- cols
-  colnames(df_papers_2005) <- cols
-  colnames(df_papers_2010) <- cols
-  colnames(df_papers_2015) <- cols
   
-  write.csv(df_papers_1990, './preprocessed/papers_year_1990.csv')
-  write.csv(df_papers_1995, './preprocessed/papers_year_1995.csv')
-  write.csv(df_papers_2000, './preprocessed/papers_year_2000.csv')
-  write.csv(df_papers_2005, './preprocessed/papers_year_2005.csv')
-  write.csv(df_papers_2010, './preprocessed/papers_year_2010.csv')
-  write.csv(df_papers_2015, './preprocessed/papers_year_2015.csv')
+  # Five year bin
+  for (year in years) {
+    df_papers_year = filter(df_papers, X2014 <= year & X2014 > (year - bin))
+    colnames(df_papers_year) <- cols
+    write.csv(df_papers_year, paste0('./preprocessed/papers_year_', year, '.csv'))
+  }
+  
   return(T)
 }
 
@@ -120,10 +110,10 @@ if (!DATA_SPLITTED_BY_YEARS) {
 }
 
 if (!DATA_PROCESSED_NODES_EDGES) {
-  processEdgesAndNodesPerYear(1990)
-  processEdgesAndNodesPerYear(1995)
-  processEdgesAndNodesPerYear(2000)
-  processEdgesAndNodesPerYear(2005)
+  # processEdgesAndNodesPerYear(1990)
+  # processEdgesAndNodesPerYear(1995)
+  # processEdgesAndNodesPerYear(2000)
+  # processEdgesAndNodesPerYear(2005)
   processEdgesAndNodesPerYear(2010)
   processEdgesAndNodesPerYear(2015)
 }

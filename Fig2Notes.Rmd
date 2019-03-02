@@ -1,0 +1,47 @@
+---
+title: "Fig2: R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+# Doable #
+Fig2A, Fig2B, FigS3, FigS4
+
+
+
+#Question 1:#
+Year 1990, 1995
+- In the paper: much sparse
+- In our result: quite dense
+
+
+#Question 2:# 
+The 1st prominent faculty is not Eric Lander (he is the second). The first is Wei Wang. 
+https://scholar.google.com/citations?user=UedS9LQAAAAJ&hl=en
+
+
+Assumptions:
+
+1) Collaborations of each papers is the combinations (C) of all coauthors
+For example, from Papers Dataset
+
+Scholar     |    Coauthors
+---------------------------------
+F1          |    0,1,2,F1,F2,F3
+
+=> 3 pairs of collaboration (edges)
+- (F1, F2) 
+- (F1, F3) 
+- (F2, F3)
+
+OR only 2 pairs of collaboration (edges)
+- (F1, F2)
+- (F1, F3)
+
+2) If there are many collaborations between of a same pair of authors. Only take into account 1. 
+
+#Question 3:#
+Fig S4
+
+
+
