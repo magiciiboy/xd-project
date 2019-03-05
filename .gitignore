@@ -3,3 +3,4 @@
 *.lof
 *.gz
 .Rproj.user
+.RData
