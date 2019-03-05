@@ -1,0 +1,17 @@
+setwd("D:\\bwm03\\Documents\\Graduate Classes\\Statistical Methods R")
+library(ggplot2)
+part2 <- read.csv("Faculty_GoogleScholar_Funding_Data_N4190.csv", header = TRUE)
+year1 <- (part2$min_year)
+head(part2)
+ktotal <- (part2$KTotal)
+X <- (part2$Chi)
+XDIndicator <- (part2$XDIndicator)
+
+ggplot(part2, aes(x = ktotal, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)
+fig3b <- ggplot(part2, aes(x = ktotal, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)
+df <- data.frame(year1, ktotal, X, XDIndicator)
+mu <- ddply(df, "XDIndicator", summarise, grp.mean=mean(ktotal))
+head(mu)
+fig3b <- fig3b + geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") + scale_x_continuous(name = "Total Degree of Collaboration", breaks = c(0, 500, 1000, 1500)) + scale_y_log10(name = "PDF")
+fig3b
+fig3b <- ggplotly(fig3b)
