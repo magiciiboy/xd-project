@@ -16,6 +16,9 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{babel,blindtext}
+\graphicspath{ {../output/} }
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \renewcommand{\baselinestretch}{1.5}
 \title{COCS 6323: Statistical Methods in Research \\ Group Project} % to specify title
@@ -38,7 +41,35 @@
 \newpage
 \section{Figure 2A}
 % !Rnw root = ../ProjectReport.Rnw
-Add the content of this section
+Giant Component\\
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \textbf{1990}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A1990.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{1995}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A1995.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{2000}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2000.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{2005}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2005.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{2010}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2010.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{2015}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2015.png}
+\endminipage
+\caption{Growth of cross-disciplinary social capital}\label{fig:s3}
+\end{figure}\\
+Evolution of the giant component in the U.S. biology-computing network. Green and magenta nodes rep- resent faculty F i with BIOF and CSF affiliation, respectively; black nodes represent faculty F i that, by time t, published at least one cross-disciplinary publication and joined the XDF group; node size is proportional to the logarithm of the degree centrality, ln C Di , of F i at time t.
 
 \newpage
 \section{Figure 2B}
@@ -74,6 +105,62 @@ Add the content of this section
 \section{Figure 3F}
 % !Rnw root = ../ProjectReport.Rnw
 Add the content of this section
+
+\newpage
+\section{Supplementary S3}
+% !Rnw root = ../ProjectReport.Rnw
+Centrality\\
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \textbf{Degree}\\
+  \includegraphics[width=5cm, height=5cm]{S3Degree.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{PageRank}\\
+  \includegraphics[width=5cm, height=5cm]{S3PageRank.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{Betweeness}\\
+  \includegraphics[width=5cm, height=5cm]{S3Betweeness.png}
+\endminipage
+\caption{Three perspectives on the centrality of Fi in the direct collaboration network}\label{fig:s3}
+\end{figure}
+
+Shown is the giant connected component of the faculty network F using all data up to 2015. The nodes and links across each network are fixed, only the node sizes vary according to the indicated centrality measure:. Notably, the most central according to each of the three measures is Eric Lander, one of the leaders of the HGP.
+
+\newpage
+\section{Supplementary S4}
+% !Rnw root = ../ProjectReport.Rnw
+Dismishing of Giant Component\\
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \textbf{1990}\\
+  \includegraphics[width=5cm, height=5cm]{S41990.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{1995}\\
+  \includegraphics[width=5cm, height=5cm]{S41995.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{2000}\\
+  \includegraphics[width=5cm, height=5cm]{S42000.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{2005}\\
+  \includegraphics[width=5cm, height=5cm]{S42005.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{2010}\\
+  \includegraphics[width=5cm, height=5cm]{S42010.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{2015}\\
+  \includegraphics[width=5cm, height=5cm]{S42015.png}
+\endminipage
+\caption{Growth of cross-disciplinary social capital}\label{fig:s3}
+\end{figure}\\
+Green and magenta nodes represent faculty Fi with BIO and CS affiliation, respectively; black nodes represent faculty Fi that by time t collaborated with at least one faculty from the opposite department and thus joined the XD group.
+
 
 \bigskip   % leave some empty space (optional)
 

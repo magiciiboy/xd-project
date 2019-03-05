@@ -16,6 +16,9 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{babel,blindtext}
+\graphicspath{ {../output/} }
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \renewcommand{\baselinestretch}{1.5}
 \title{COCS 6323: Statistical Methods in Research \\ Group Project} % to specify title
@@ -65,6 +68,14 @@
 \newpage
 \section{Figure 3F}
 \SweaveInput{./sections/section3F.Rnw}
+
+\newpage
+\section{Supplementary S3}
+\SweaveInput{./sections/sectionS3.Rnw}
+
+\newpage
+\section{Supplementary S4}
+\SweaveInput{./sections/sectionS4.Rnw}
 
 \bigskip   % leave some empty space (optional)
 

@@ -1,2 +1,30 @@
 % !Rnw root = ../ProjectReport.Rnw
-Add the content of this section
+Giant Component\\
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \textbf{1990}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A1990.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{1995}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A1995.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{2000}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2000.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{2005}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2005.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \textbf{2010}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2010.png}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \textbf{2015}\\
+  \includegraphics[width=5cm, height=5cm]{Fig2A2015.png}
+\endminipage
+\caption{Growth of cross-disciplinary social capital}\label{fig:s3}
+\end{figure}\\
+Evolution of the giant component in the U.S. biology-computing network. Green and magenta nodes rep- resent faculty F i with BIOF and CSF affiliation, respectively; black nodes represent faculty F i that, by time t, published at least one cross-disciplinary publication and joined the XDF group; node size is proportional to the logarithm of the degree centrality, ln C Di , of F i at time t.
