@@ -1,2 +1,7 @@
 % !Rnw root = ../ProjectReport.Rnw
-Add the content of this section
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=9.9cm, height=6.6cm]{Fig2B.png}
+  \caption{Growth of cross-disciplinary social capital}
+  \label{fig:2B}
+\end{figure}

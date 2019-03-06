@@ -1,31 +1,32 @@
 % !Rnw root = ../ProjectReport.Rnw
 Dismishing of Giant Component\\
 \begin{figure}[!htb]
-\minipage{0.32\textwidth}
-  \textbf{1990}\\
-  \includegraphics[width=5cm, height=5cm]{S41990.png}
-\endminipage\hfill
-\minipage{0.32\textwidth}
-  \textbf{1995}\\
-  \includegraphics[width=5cm, height=5cm]{S41995.png}
-\endminipage\hfill
-\minipage{0.32\textwidth}%
-  \textbf{2000}\\
-  \includegraphics[width=5cm, height=5cm]{S42000.png}
-\endminipage\hfill
-\minipage{0.32\textwidth}
-  \textbf{2005}\\
-  \includegraphics[width=5cm, height=5cm]{S42005.png}
-\endminipage\hfill
-\minipage{0.32\textwidth}
-  \textbf{2010}\\
-  \includegraphics[width=5cm, height=5cm]{S42010.png}
-\endminipage\hfill
-\minipage{0.32\textwidth}%
-  \textbf{2015}\\
-  \includegraphics[width=5cm, height=5cm]{S42015.png}
-\endminipage
-\caption{Growth of cross-disciplinary social capital}\label{fig:s3}
+  \minipage{0.32\textwidth}
+    \textbf{1990}\\
+    \includegraphics[width=5cm, height=5cm]{S41990.png}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \textbf{1995}\\
+    \includegraphics[width=5cm, height=5cm]{S41995.png}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+    \textbf{2000}\\
+    \includegraphics[width=5cm, height=5cm]{S42000.png}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \textbf{2005}\\
+    \includegraphics[width=5cm, height=5cm]{S42005.png}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+    \textbf{2010}\\
+    \includegraphics[width=5cm, height=5cm]{S42010.png}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+    \textbf{2015}\\
+    \includegraphics[width=5cm, height=5cm]{S42015.png}
+  \endminipage
+  \caption{Growth of cross-disciplinary social capital}
+  \label{fig:s4}
 \end{figure}\\
 Green and magenta nodes represent faculty Fi with BIO and CS affiliation, respectively; black nodes represent faculty Fi that by time t collaborated with at least one faculty from the opposite department and thus joined the XD group.
 
