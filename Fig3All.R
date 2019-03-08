@@ -159,4 +159,4 @@ fig3f = ggplot(data=dens_df, aes(x=x, y=density, ymax=density, ymin=1e-6, col=gr
 allplot = ggarrange(fig3a, fig3b, fig3c, fig3d, fig3e, fig3f, ncol=2, nrow=3, common.legend = TRUE, legend="bottom", align="hv")
 allplot
 
-ggsave("plot3_all.png", allplot, width=10, height=15, units="in", dpi=300, scale = 0.8)
+ggsave("./output/Fig3All.png", allplot, width=10, height=15, units="in", dpi=300, scale = 0.8)
