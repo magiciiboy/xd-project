@@ -1,3 +1,5 @@
+# Author: Tung Huynh
+
 addAuthorNode <- function(df, gid, orientation=NA, k=1) {
   # Add new author node
   # 'Id', 'Label', 'Interval', 'Weight', 'Dept', 'Orientation'

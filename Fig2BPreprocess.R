@@ -1,18 +1,16 @@
 # Author: Tung Huynh
+library(tidyr)
 
-# This script generate output used in Gephi Application to 
-# create the network graph. 
-# There are 2 files to generate:
-# - Nodes: (id, label, interval, size)
-# - Edges: (source, target, type, id, label, interval, weight)
+FILE_NAME = "./preprocessed/collaborations_xd_fraction.csv"
 library(dplyr)
 
 source('./Fig2Config.R')
 source('./Fig2Scholar.R')
-source('./Fig2Graph.R')
+
+PAPERS_SPLITTED_BY_YEAR = T
 
 # Functions
-splitPapersByYear <- function(bin=5) {
+splitPapersByYear <- function(bin=1) {
   # This function splits the data by published year of  
   # a paper. Base on those preprocessed sub-dataset we
   # will create nodes and edges for each year.
@@ -21,7 +19,7 @@ splitPapersByYear <- function(bin=5) {
   # to a cross-disciplinary at the year of cross-disciplinary
   # paper has been published.
   df_papers = read.csv('./data/GoogleScholar_paper_stats.csv')
-  years = c(1990, 1995, 2000, 2005, 2010, 2015)
+  years = c(1990:2015)
   
   cols <- c("google_id", "year", "citations", "coauthor_codes")
   
@@ -29,14 +27,14 @@ splitPapersByYear <- function(bin=5) {
   for (year in years) {
     df_papers_year = filter(df_papers, X2014 <= year & X2014 > (year - bin))
     colnames(df_papers_year) <- cols
-    write.csv(df_papers_year, paste0('./preprocessed/papers_year_', year, '.csv'))
+    write.csv(df_papers_year, paste0('./preprocessed/2b/papers_year_', year, '.csv'))
   }
   
   return(T)
 }
 
 processEdgesAndNodesPerYear <- function(year) {
-  df_papers <- read.csv(paste0('./preprocessed/papers_year_', year, '.csv'))
+  df_papers <- read.csv(paste0('./preprocessed/2b/papers_year_', year, '.csv'))
   
   df_nodes <- data.frame(matrix(ncol = 6, nrow = 0))
   colnames(df_nodes) <- c('Id', 'Label', 'Interval', 'Weight', 'Dept', 'Orientation')
@@ -100,22 +98,35 @@ processEdgesAndNodesPerYear <- function(year) {
   }
   
   # Save
-  write.csv(df_nodes_cleaned, paste0('./preprocessed/nodes_year_', year, '.csv'))
-  write.csv(df_edges, paste0('./preprocessed/edges_year_', year, '.csv'))
+  write.csv(df_nodes_cleaned, paste0('./preprocessed/2b/nodes_year_', year, '.csv'))
+  write.csv(df_edges, paste0('./preprocessed/2b/edges_year_', year, '.csv'))
   
   return(T)
 }
 
-# Main
-if (!DATA_SPLITTED_BY_YEARS) {
-  splitPapersByYear()
+aggreateEdgesForYears <- function() {
+  df_fraction <- data.frame(matrix(ncol = 6, nrow = 0))
+  colnames(df_fraction) <- c('xd_direct', 'xd_mediate', 'year')
+  
+  xd_direct_count <- 0 
+  xd_mediate_count <- 0 
+  xd_total_count <- 0
+  
+  for (year in years) {
+    df_papers_year = read.csv(paste0('./preprocessed/2b/papers_year_', year, '.csv'))
+    xd_direct <- xd_direct_count / xd_total_count
+    xd_mediate <- xd_mediate_count / xd_total_count
+    
+    df_fraction[nrow(df_fraction) + 1,] <- list(
+      xd_direct,
+      xd_medate,
+      year
+    )
+  }
+  
+  write.csv(FILE_NAME, df_fraction)
 }
 
-if (!DATA_PROCESSED_NODES_EDGES) {
-  # processEdgesAndNodesPerYear(1990)
-  # processEdgesAndNodesPerYear(1995)
-  # processEdgesAndNodesPerYear(2000)
-  # processEdgesAndNodesPerYear(2005)
-  processEdgesAndNodesPerYear(2010)
-  processEdgesAndNodesPerYear(2015)
+if (!PAPERS_SPLITTED_BY_YEAR) {
+  splitPapersByYear()
 }

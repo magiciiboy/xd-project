@@ -1,3 +1,5 @@
+# Author: Tung Huynh
+
 df_papers = read.csv('./data/GoogleScholar_paper_stats.csv')
 cols <- c("google_id", "year", "citations", "coauthor_codes")
 colnames(df_papers) <- cols

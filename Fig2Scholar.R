@@ -1,3 +1,5 @@
+# Author: Tung Huynh
+
 # Load common data
 df_scholars = read.csv('./data/Faculty_GoogleScholar_Funding_Data_N4190.csv')
 
