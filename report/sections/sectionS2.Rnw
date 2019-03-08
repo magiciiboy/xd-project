@@ -1,13 +1,13 @@
 % !Rnw root = ../ProjectReport.Rnw
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=10cm, height=7cm]{FigS2A.png}
+  \includegraphics[width=10cm, height=7cm]{FigS2A.PNG}
   \caption{Network Distributions for Direct and Mediated Associations of Biologists}
   \label{fig:S2A}
 \end{figure}
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=10cm, height=7cm]{FigS2B.png}
+  \includegraphics[width=10cm, height=7cm]{FigS2B.PNG}
   \caption{Network Distributions for Direct and Mediated Associations of Conputer Scientists}
   \label{fig:S2B}
 \end{figure}
