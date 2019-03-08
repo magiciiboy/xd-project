@@ -4,12 +4,13 @@
 library(ggplot2)
 library(tidyr)
 
-fraction_data <-
-  data.frame(
-    xd_direct = seq(from=0.1, to=0.15),
-    xd_mediate = seq(from=0.075, to=0.125),
-    year = seq(from=1980, to=2015)
-  )
+# fraction_data <-
+#  data.frame(
+#    xd_direct = seq(from=0.1, to=0.15),
+#    xd_mediate = seq(from=0.075, to=0.125),
+#    year = seq(from=1980, to=2015)
+#  )
+fraction_data <- read.csv("./preprocessed/collaborations_xd_fraction.csv")
 
 max_xd = max(c(max(fraction_data$xd_direct), max(fraction_data$xd_mediate)))
 axis_x_seq = seq(1980,2015,2)
