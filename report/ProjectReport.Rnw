@@ -70,6 +70,14 @@
 \SweaveInput{./sections/section3F.Rnw}
 
 \newpage
+\section{Supplementary S1}
+\SweaveInput{./sections/sectionS1.Rnw}
+
+\newpage
+\section{Supplementary S2}
+\SweaveInput{./sections/sectionS2.Rnw}
+
+\newpage
 \section{Supplementary S3}
 \SweaveInput{./sections/sectionS3.Rnw}
 
