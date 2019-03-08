@@ -28,4 +28,4 @@ Giant Component\\
   \caption{Growth of cross-disciplinary social capital}
   \label{fig:2A}
 \end{figure}\\
-Evolution of the giant component in the U.S. biology-computing network. Green and magenta nodes rep- resent faculty F i with BIOF and CSF affiliation, respectively; black nodes represent faculty F i that, by time t, published at least one cross-disciplinary publication and joined the XDF group; node size is proportional to the logarithm of the degree centrality, ln C Di , of F i at time t
+Evolution of the giant component in the U.S. biology-computing network. Green and magenta nodes rep- resent faculty F i with BIOF and CSF affiliation, respectively; black nodes represent faculty F i that, by time t, published at least one cross-disciplinary publication and joined the XDF group; node size is proportional to the logarithm of the degree centrality, ln C Di , of F i at time t.
