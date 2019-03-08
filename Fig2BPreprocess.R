@@ -6,18 +6,14 @@ library(dplyr)
 
 source('./Fig2Config.R')
 source('./Fig2Scholar.R')
+source('./Fig2Graph.R')
 
 PAPERS_SPLITTED_BY_YEAR = T
+CALCULATED_EDGES_PER_YEAR = T
+CALCULATED_FRACTION = T
 
 # Functions
 splitPapersByYear <- function(bin=1) {
-  # This function splits the data by published year of  
-  # a paper. Base on those preprocessed sub-dataset we
-  # will create nodes and edges for each year.
-  # According to the paper, the research orientation of
-  # each falcuty can shift from an original department 
-  # to a cross-disciplinary at the year of cross-disciplinary
-  # paper has been published.
   df_papers = read.csv('./data/GoogleScholar_paper_stats.csv')
   years = c(1990:2015)
   
@@ -67,7 +63,7 @@ processEdgesAndNodesPerYear <- function(year) {
         coauthor_gid <- directed_coauthors[row_dca]
         # Add node and an edge to the falcuty
         df_nodes <- addAuthorNode(df_nodes, coauthor_gid)
-        df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid)
+        df_edges <- addEdge(df_edges, gid_source=gid, gid_target=coauthor_gid, add_mediate_links=T)
         
         # Add edge between coauthors
         if (n_coauthors > 1 && row_dca < n_coauthors) {
@@ -80,25 +76,8 @@ processEdgesAndNodesPerYear <- function(year) {
     }
   }
   
-  # Elimiate nodes having no edges
-  df_nodes_cleaned <- data.frame(matrix(ncol = 6, nrow = 0))
-  colnames(df_nodes_cleaned) <- c('Id', 'Label', 'Interval', 'Weight', 'Dept', 'Orientation')
-  
-  for (row in 1:nrow(df_nodes)) {
-    gid <- as.character(df_nodes[row, "Id"])
-    
-    node_degree <- calculateNodeDegree(df_edges, gid)
-    if( node_degree > 0 ) {
-      xd <- (as.character(df_nodes[row, "Orientation"]) == 'XD')
-      node_coauthors <- getCoauthors(df_edges, gid)
-      node_orientation <- ifelse(xd, 'XD', getScholarOrientation(df_nodes, gid, node_coauthors))
-      # Add node
-      df_nodes_cleaned <- addAuthorNode(df_nodes_cleaned, gid, orientation=node_orientation, k=node_degree)
-    }
-  }
-  
   # Save
-  write.csv(df_nodes_cleaned, paste0('./preprocessed/2b/nodes_year_', year, '.csv'))
+  write.csv(df_nodes, paste0('./preprocessed/2b/nodes_year_', year, '.csv'))
   write.csv(df_edges, paste0('./preprocessed/2b/edges_year_', year, '.csv'))
   
   return(T)
@@ -110,16 +89,20 @@ aggreateEdgesForYears <- function() {
   
   xd_direct_count <- 0 
   xd_mediate_count <- 0 
-  xd_total_count <- 0
+  total_count <- 0
   
   for (year in years) {
-    df_papers_year = read.csv(paste0('./preprocessed/2b/papers_year_', year, '.csv'))
-    xd_direct <- xd_direct_count / xd_total_count
-    xd_mediate <- xd_mediate_count / xd_total_count
+    df_edges_year = read.csv(paste0('./preprocessed/2b/edges_year_', year, '.csv'))
+    
+    xd_direct_count <- nrow(filter(df_edges_year, Type == 'Direct'))
+    xd_mediate_count <- nrow(filter(df_edges_year, Type == 'Mediate'))
+    
+    xd_direct <- xd_direct_count / 2 * total_count
+    xd_mediate <- xd_mediate_count / 2 * total_count
     
     df_fraction[nrow(df_fraction) + 1,] <- list(
       xd_direct,
-      xd_medate,
+      xd_mediate,
       year
     )
   }
@@ -129,4 +112,15 @@ aggreateEdgesForYears <- function() {
 
 if (!PAPERS_SPLITTED_BY_YEAR) {
   splitPapersByYear()
+}
+
+if (!CALCULATED_EDGES_PER_YEAR) {
+  years = c(1990:2015)
+  for(year in years) {
+    processEdgesAndNodesPerYear(year)
+  }
+}
+
+if (!CALCULATED_FRACTION) {
+  aggreateEdgesForYears()
 }

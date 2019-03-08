@@ -31,7 +31,7 @@ addAuthorNode <- function(df, gid, orientation=NA, k=1) {
   return(df)
 }
 
-addEdge <- function(df, gid_source, gid_target) {
+addEdge <- function(df, gid_source, gid_target, type=NA, add_mediate_links=F) {
   # Add a collaboration edge
   # 'Source', 'Target', 'Type', 'Id', 'Label', 'Interval', 'Weight'
   if (is.na(gid_source) || is.na(gid_target)) {
@@ -41,7 +41,7 @@ addEdge <- function(df, gid_source, gid_target) {
   edge_source <- gid_source
   edge_targe <- gid_target
   # Type: Direct / Mediated
-  edge_type <- 'Direct'
+  edge_type <- ifelse(!is.na(type), type, 'Direct')
   edge_id <- paste(gid_source, gid_target, sep="_")
   edge_label <- edge_type
   edge_interval <- ''
@@ -61,6 +61,23 @@ addEdge <- function(df, gid_source, gid_target) {
       edge_weight
     )
   }
+  
+  # Add mediate link
+  if (add_mediate_links) {
+    coauthor_origin_links <- filter(df, (Source == gid_source & Target == gid_source))
+    coauthor_target_links <- filter(df, (Source == gid_target & Target == gid_target))
+    
+    for(co in 1:nrow(coauthor_origin_links)) {
+      orow <- coauthor_origin_links[co]
+      oid <- ifelse(orow$Source == gid_source, orow$Target, orow$Source)
+      for(ct in 1:nrow(coauthor_target_links)) {
+        trow <- coauthor_target_links[ct]
+        tid <- ifelse(orow$Source == gid_target, trow$Target, trow$Source)
+        addEdge(gid_source = oid, gid_target = tid, type='Mediate')
+      }
+    }
+  }
+  
   return(df)
 }
 
