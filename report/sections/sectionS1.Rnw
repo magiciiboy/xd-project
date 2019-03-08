@@ -1,3 +1,8 @@
 % !Rnw root = ../ProjectReport.Rnw
-Add your content here\\
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=8cm, height=15cm]{FigS1.png}
+  \caption{Robustness of the F network with respect to link removal}
+  \label{fig:S2ab}
+\end{figure}
 Figure S1a depicts the ratio of the largest component other than the initial giant component within the F network. By randomly removing links, the robustness of the network is tested through the observation of the relative size of the remaining giant component to the next largest subnetwork. Error bars are fitted to points on the curve depicting mean and standard deviation. This ratio slowly declines until a critical point of approximately 0.6, when the network fragments. Figure S1b shows when the network breaks up into significantly smaller subnetworks and the giant component itself degrades. This measured peak breaking point coincides with the steep decline observed in S1a, confirming that at this fraction of links removed, the ratio of giant component to next largest subnetwork declines as well. 
