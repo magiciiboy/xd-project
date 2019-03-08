@@ -2,7 +2,7 @@
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=10cm, height=7cm]{Fig3All.png}
+  \includegraphics[width=12cm, height=18cm]{Fig3All.png}
   \caption{Descriptive statistics of the career dataset}
   \label{Fig3}
 \end{figure}

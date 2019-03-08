@@ -3,10 +3,10 @@
 \begin{tabular}{|l|l|}
 \hline
 \textbf{Member} & \textbf{Contribution} \\ \hline
-Brad & 3A 3B 3C S2\\ \hline
+Bradley Macdonald & 3A 3B 3C S2\\ \hline
 Tung Huynh & 2A 2B S3 S4\\ \hline
-Yifan & 3D 3E 3F S1\\ \hline
+Yifan Zhang & 3D 3E 3F S1\\ \hline
 \end{tabular}
-\caption{Contribution of group member}
+\caption{Contribution of group members}
 \label{tbl:contribution}
 \end{table}

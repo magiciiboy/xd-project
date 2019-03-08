@@ -22,7 +22,7 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \renewcommand{\baselinestretch}{1.5}
 \title{COCS 6323: Statistical Methods in Research \\ Group Project} % to specify title
-\author{Group <number> \\
+\author{Group 2 \\
         Department of Computer Science\\
         University of Houston}         % to specify author(s)
 \begin{document}                      % document begins here
