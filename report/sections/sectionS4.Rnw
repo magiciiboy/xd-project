@@ -26,7 +26,7 @@
   \endminipage
   \caption{Evolution of the nongiant components in the network}
   \label{fig:s4}
-\end{figure}\\
+\end{figure}
 
 This figure depicts the development of the nongiant components in the direct collaboration network. Similarly to Figure 2A and Figure S3, green and magenta nodes represent faculty $F_i$ in BIO and CS department, respectively, while black nodes represent faculty $F_i$ in the XD group. 
 

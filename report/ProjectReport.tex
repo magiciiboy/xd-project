@@ -104,7 +104,15 @@ This figure depicts the evolution of the fraction of collaboration links in the 
 \newpage
 \section{Figure 3A}
 % !Rnw root = ../ProjectReport.Rnw
-Add the content of this section
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=10cm, height=7cm]{xd-project/plot3_all.png}
+  \caption{Descriptive statistics of the career dataset}
+  \label{Fig3}
+\end{figure}
+
+Figures 3 a-F, are probability distributions of the following data: year of first publication, total number of collaborators, the fraction of collaborators who are XD, PageRank centrality of professors within the network, and mean impact factor of the publication record of professors within the network. The data visualization above supports a conclusion that XD professors are more collaborative than BIO or CS specific professors. Figures 3B, C, and D show that XD professors are more collaborative than their single-discipline counterparts. XD professors are also shown to have greater total degrees of collaboration, a greater fraction of collaborators who themselves are XD, and higher overall PageRank centrality. XD professors also outperform BIO and CS in terms of mean publication impact factor. Figure 3A suggests that XD professors published their first paper in genomics on average before BIO and CS. 
 
 \newpage
 \section{Figure 3B}
@@ -136,6 +144,7 @@ Figures 3 a-F, are probability distributions of the following data: year of firs
 \section{Supplementary S1}
 % !Rnw root = ../ProjectReport.Rnw
 Add your content here\\
+Figure S1a depicts the ratio of the largest component other than the initial giant component within the F network. By randomly removing links, the robustness of the network is tested through the observation of the relative size of the remaining giant component to the next largest subnetwork. Error bars are fitted to points on the curve depicting mean and standard deviation. This ratio slowly declines until roughly ___, from this observation we can assert ____. Figure S1b shows when the network breaks up into significantly smaller subnetworks and the giant component itself degrades. This measured peak breaking point coincides with the steep decline observed in S1a, confirming that at this fraction of links removed, the ratio of giant component to next largest subnetwork declines as well. 
 
 \newpage
 \section{Supplementary S2}
@@ -149,10 +158,10 @@ Add your content here\\
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=10cm, height=7cm]{Fig2SB.PNG}
-  \caption{Network Distributions for Direct and Mediated Associations of Conputer Scientists}
+  \caption{Network Distributions for Direct and Mediated Associations of Computer Scientists}
   \label{fig:S2B}
 \end{figure}
-Figure S2 depicts the number of associations between professors within biology departments (a), and computer science departments (b) with other researchers studying genomics. The dark area shows counts the direct connections between professors, while the lighter orange area shows counts of mediated connections. Vertical lines represent means of each distribution. Direct links are made when professors within the dataset collaborate to publish a paper. Mediated links are established when professors have a collaborator in common. The histograms above demonstrate the importance of the mediated connections, with regards to the robustness of the network. 
+Figure S2 depicts the number of associations between professors within BIO departments (a), and CS departments (b) with other researchers studying genomics. The dark area shows counts of the direct connections between professors, while the lighter orange area shows counts of mediated connections. Vertical lines represent means of each distribution. Direct links are made when professors within the Fi dataset collaborate to publish a paper. Mediated links are established when professors have a collaborator who exists outside of Fi in common. The histograms above demonstrate the importance of the mediated connections, with regards to the robustness of the network. Thus, professors who are outside of the dataset at hand make an important impact on the social network studied here.  
 
 \newpage
 \section{Supplementary S3}
@@ -212,7 +221,7 @@ Remarkably, regardless of the change of centrality measure using in each network
   \endminipage
   \caption{Evolution of the nongiant components in the network}
   \label{fig:s4}
-\end{figure}\\
+\end{figure}
 
 This figure depicts the development of the nongiant components in the direct collaboration network. Similarly to Figure 2A and Figure S3, green and magenta nodes represent faculty $F_i$ in BIO and CS department, respectively, while black nodes represent faculty $F_i$ in the XD group. 
 
