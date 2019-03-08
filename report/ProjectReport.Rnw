@@ -38,6 +38,10 @@
 \listoffigures          % inserts LOF (numbers and captions)
 
 \newpage
+\section{Contribution}
+\SweaveInput{./sections/contribution.Rnw}
+
+\newpage
 \section{Figure 2A}
 \SweaveInput{./sections/section2A.Rnw}
 
