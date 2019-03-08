@@ -1,5 +1,4 @@
 % !Rnw root = ../ProjectReport.Rnw
-Centrality\\
 \begin{figure}[!htb]
   \minipage{0.32\textwidth}
     \textbf{Degree}\\
@@ -10,11 +9,17 @@ Centrality\\
     \includegraphics[width=5cm, height=5cm]{S3PageRank.png}
   \endminipage\hfill
   \minipage{0.32\textwidth}%
-    \textbf{Betweeness}\\
+    \textbf{Betweenness}\\
     \includegraphics[width=5cm, height=5cm]{S3Betweeness.png}
   \endminipage
-  \caption{Three perspectives on the centrality of Fi in the direct collaboration network}
+  \caption{Three perspectives on the centrality of $F_i$ in the direct collaboration network}
   \label{fig:s3}
 \end{figure}
 
-Shown is the giant connected component of the faculty network F using all data up to 2015. The nodes and links across each network are fixed, only the node sizes vary according to the indicated centrality measure:. Notably, the most central according to each of the three measures is Eric Lander, one of the leaders of the HGP.
+This figure shows the giant connected component of the faculty network using all data up to 2015 from three different perspectives. The position of nodes and links are unchanged in the three networks. And the node sizes change respectively to the three centrality measure including Degree, PageRank, and Betweenness.
+
+While Degree centrality treats the importance of each node equally, PageRank takes into account the prominence of each faculty. Therefore, with the same number of links, a node size of faculty $F_i$ in the network using PageRank centrality measure changes to smaller or larger than its counterpart in the network using Degree centrality measure according to the prominence of his collaborators.
+
+Besides, because the Betweenness centrality measures the number of shortest paths passing through a node, the network using this measure only emphasize on those nodes helping to increase the robustness of the whole network.
+
+Remarkably, regardless of the change of centrality measure using in each network, the group of founders of HGP including Eric Lander always demonstrate their significant role of connecting the cross-disciplinary links with the highest central.

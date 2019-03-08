@@ -1,5 +1,4 @@
 % !Rnw root = ../ProjectReport.Rnw
-Dismishing of Giant Component\\
 \begin{figure}[!htb]
   \minipage{0.32\textwidth}
     \textbf{1990}\\
@@ -25,8 +24,13 @@ Dismishing of Giant Component\\
     \textbf{2015}\\
     \includegraphics[width=5cm, height=5cm]{S42015.png}
   \endminipage
-  \caption{Growth of cross-disciplinary social capital}
+  \caption{Evolution of the nongiant components in the network}
   \label{fig:s4}
 \end{figure}\\
-Green and magenta nodes represent faculty Fi with BIO and CS affiliation, respectively; black nodes represent faculty Fi that by time t collaborated with at least one faculty from the opposite department and thus joined the XD group.
+
+This figure depicts the development of the nongiant components in the direct collaboration network. Similarly to Figure 2A and Figure S3, green and magenta nodes represent faculty $F_i$ in BIO and CS department, respectively, while black nodes represent faculty $F_i$ in the XD group. 
+
+Notably, the number of nodes and links decreases significantly from 1990 to 2015. If in the year 1990, due to the lack of cross-disciplinary collaborations, there are some local strong groups of internal collaboration. In the 1991-1995 period, the network also presents the establishment of cross-disciplinary collaboration. However, those groups of collaboration are still local and disjointed. From 2000 to 2010, when the size of local disjointed groups increases and there were links connecting these groups so that they joined to the giant component and disappear in the network of nongiant in those years. Finally, in the year 2015, there are only a few faculties who are left out of the giant robust component.
+
+
 

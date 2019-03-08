@@ -1,5 +1,4 @@
 % !Rnw root = ../ProjectReport.Rnw
-Giant Component\\
 \begin{figure}[!htb]
   \minipage{0.32\textwidth}
     \textbf{1990}\\
@@ -27,5 +26,8 @@ Giant Component\\
   \endminipage
   \caption{Growth of cross-disciplinary social capital}
   \label{fig:2A}
-\end{figure}\\
-Evolution of the giant component in the U.S. biology-computing network. Green and magenta nodes rep- resent faculty F i with BIOF and CSF affiliation, respectively; black nodes represent faculty F i that, by time t, published at least one cross-disciplinary publication and joined the XDF group; node size is proportional to the logarithm of the degree centrality, ln C Di , of F i at time t.
+\end{figure}
+
+This figure depicts the evolution of the giant component in the U.S. biology-computing network of collaborations. It consists of six consecutive periods from 1990 to 2015. Each period illustrates the collaborations of the two departments in five previous years. While green and magenta nodes represent faculty $F_i$ in $BIO$ and $CS$ department, respectively; black vertices represent faculty $F_i$ that published at least one cross-disciplinary publication. In this figure, node size is proportional to the logarithm of the degree centrality, the total number of collaborations of the faculty.
+
+In the first network of the year 1990, the giant component only consists of links between CS nodes. In the period from 1900 to 2005, in which the HGP happens, the networks represent the establishment of cross-disciplinary collaborations. Finally, in the last period from 2005 to 2015, the giant component does not only expands in term of the number of collaborations and robustness, but it also notably illustrates the significant role of $XD$ group containing the largest nodes in the network.

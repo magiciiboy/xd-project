@@ -2,6 +2,8 @@
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=10cm, height=7cm]{Fig2B.png}
-  \caption{Growth of cross-disciplinary social capital}
+  \caption{Evolution of the fraction of cross-disciplinary collaboration links}
   \label{fig:2B}
 \end{figure}
+
+This figure depicts the evolution of the fraction of collaboration links in the network that are cross-disciplinary. While blue line illustrate the direct $XD$ links, the red line represent the mediated $XD$ links by pollinators. The orange area in the middle annotates the HGP project period from 1990 to 2013.
