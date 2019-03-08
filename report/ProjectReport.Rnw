@@ -42,36 +42,15 @@
 \SweaveInput{./sections/contribution.Rnw}
 
 \newpage
-\section{Figure 2A}
+\section{Figure 2}
 \SweaveInput{./sections/section2A.Rnw}
 
 \newpage
-\section{Figure 2B}
 \SweaveInput{./sections/section2B.Rnw}
 
 \newpage
-\section{Figure 3A}
+\section{Figure 3}
 \SweaveInput{./sections/section3A.Rnw}
-
-\newpage
-\section{Figure 3B}
-\SweaveInput{./sections/section3B.Rnw}
-
-\newpage
-\section{Figure 3C}
-\SweaveInput{./sections/section3C.Rnw}
-
-\newpage
-\section{Figure 3D}
-\SweaveInput{./sections/section3D.Rnw}
-
-\newpage
-\section{Figure 3E}
-\SweaveInput{./sections/section3E.Rnw}
-
-\newpage
-\section{Figure 3F}
-\SweaveInput{./sections/section3F.Rnw}
 
 \newpage
 \section{Supplementary S1}
