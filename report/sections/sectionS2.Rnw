@@ -1,1 +1,14 @@
-
+% !Rnw root = ../ProjectReport.Rnw
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=10cm, height=7cm]{FigS2A.png}
+  \caption{Network Distributions for Direct and Mediated Associations of Biologists}
+  \label{fig:S2A}
+\end{figure}
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=10cm, height=7cm]{FigS2B.png}
+  \caption{Network Distributions for Direct and Mediated Associations of Conputer Scientists}
+  \label{fig:S2B}
+\end{figure}
+Figure S2 depicts the number of associations between professors within biology departments (a), and computer science departments (b) with other researchers studying genomics. The dark area shows counts the direct connections between professors, while the lighter orange area shows counts of mediated connections. Vertical lines represent means of each distribution. Direct links are made when professors within the dataset collaborate to publish a paper. Mediated links are established when professors have a collaborator in common. The histograms above demonstrate the importance of the mediated connections, with regards to the robustness of the network. 
