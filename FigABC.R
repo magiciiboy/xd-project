@@ -1,3 +1,7 @@
+library(ggplot2)
+
+part2 <- read.csv("Faculty_GoogleScholar_Funding_Data_N4190.csv", header = TRUE)
+
 ###Probability Distribution of Year of First Publication
 ggplot(part2, aes(x = year1, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)
 fig3a <- ggplot(part2, aes(x = year1, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)

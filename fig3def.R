@@ -36,17 +36,19 @@ dens_df$group <- c(rep("BIO", cut_bio), rep("CS", cut_cs), rep("XD", cut_xd))
 myorder = c("BIO","CS","XD")
 
 CairoWin()
-ggplot(data=dens_df, aes(x=x, y=density, ymax=density, ymin=1e-5, col=group, fill=group)) + 
+fig3d = ggplot(data=dens_df, aes(x=x, y=density, ymax=density, ymin=1e-5, col=group, fill=group)) + 
 
-  # geom_ribbon(color=NA, alpha = 0.5)  + 
-  # scale_fill_manual(values=c("green", "purple", "black"))  + 
+  geom_ribbon(color=NA, alpha = 0.5)  +
+  # scale_fill_manual(values=c("green", "purple", "black"))  +
   
-  geom_line(size=1.5)  + 
-  scale_color_manual(values=c(XD="black", CS="purple", BIO="green"))  + 
+  geom_line(size=1.1)  + 
+  # scale_color_manual(values=c(XD="black", CS="purple", BIO="green"))  + 
   
   scale_y_log10() + 
   coord_cartesian(ylim = c(1.0e-4, 5), expand=FALSE)
 
+
+ggplotly(fig3d)
 
 
 fig3d <- ggplot() +
