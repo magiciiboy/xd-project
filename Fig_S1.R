@@ -19,7 +19,7 @@ el[1:5,]
 max_comp = matrix(0, nrow = g_ecount, ncol = 40)
 frag_size = matrix(0, nrow = g_ecount, ncol = 40)
 
-for (repi in 1:40) {
+for (repi in 1:10) {
   print(repi)
   g2 = graph
   for (i in 1:g_ecount) {
@@ -29,7 +29,7 @@ for (repi in 1:40) {
     
     cmpnt = components(g2, mode = "weak")
     max_comp[i, repi] =  cmpnt$csize[1]
-    frag_size[i, repi] = var(  tail( cmpnt$csize, -1 )   )
+    frag_size[i, repi] = var(  cmpnt$csize[cmpnt$csize < max(cmpnt$csize)]   )
   }
 }
 
@@ -59,16 +59,13 @@ arrows( x_intv_norm, p1_mean[x_intv]-p1_var[x_intv], x_intv_norm, p1_mean[x_intv
 
 
 
-frag_size[frag_size==1] = NA
+# frag_size[frag_size<=1] = NA
 
 p2_mean = rowMeans(frag_size, na.rm = TRUE)
-p2_var = rowVars(frag_size, na.rm = TRUE)
+p2_var = rowVars(frag_size[,1:10], na.rm = TRUE)
 
-plot(x=(1:g_ecount)/g_ecount, y=p2_mean, type="l", ylim=range(0,1), xlim=range(0,1), lwd = 2,
+plot(x=(1:g_ecount)/g_ecount, y=p2_mean, type="l", ylim=range(0,2), xlim=range(0,1), lwd = 2,
      xlab="Fraction of Removed Links", ylab="Variation in Fragmentation Size")
-par(new=TRUE)
-arrows( x_intv_norm, p1_mean[x_intv]-p1_var[x_intv], x_intv_norm, p1_mean[x_intv]+p1_var[x_intv],
-        length=0.05, angle=90, code=3, ylim=range(0,1), xlim=range(0,1), lwd = 2)
 
 
 dev.off()
