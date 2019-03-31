@@ -14,7 +14,7 @@ mu <- ddply(fund_data, "XDIndicator", summarise, grp.mean=mean(min_year))
 fig3a <- ggplot(fund_data, aes(x = min_year, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)
 
 fig3a <- fig3a + geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") +
-  scale_x_continuous(name = "Year of First Publication", breaks = c(1960, 1970, 1980, 1990, 2000, 2010)) +
+  scale_x_continuous(name = "A: Year of First Publication", breaks = c(1960, 1970, 1980, 1990, 2000, 2010)) +
   scale_y_continuous(name = expression(paste("PDF (y" [i] ^ "0",")" ) ) )
 # fig3a
 
@@ -24,7 +24,7 @@ mu <- ddply(fund_data, "XDIndicator", summarise, grp.mean=mean(KTotal))
 fig3b <- ggplot(fund_data, aes(x = KTotal, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)
 
 fig3b <- fig3b + geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") +
-  scale_x_continuous(name = "Total Degree of Collaboration, Ki", breaks = c(0, 500, 1000, 1500)) +
+  scale_x_continuous(name = "B: Total Degree of Collaboration, Ki", breaks = c(0, 500, 1000, 1500)) +
   scale_y_continuous(name = expression(paste("PDF (y" [i] ^ "0",")" ) ) )
 # fig3b
 
@@ -34,7 +34,7 @@ mu <- ddply(fund_data, "XDIndicator", summarise, grp.mean=mean(Chi))
 fig3c <- ggplot(fund_data, aes(x = X, fill = XDIndicator)) + geom_density(col = NA, alpha = 0.5)
 
 fig3c <- fig3c + geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") +
-  scale_x_continuous(name = "Cross-Disciplinarity", breaks = c(0.0, 0.2, 0.4, 0.6, 0.8, 1.0)) +
+  scale_x_continuous(name = "C: Cross-Disciplinarity", breaks = c(0.0, 0.2, 0.4, 0.6, 0.8, 1.0)) +
   scale_y_continuous(name = expression(paste("PDF (", chi[i], ")" ) ) )
 fig3c
 
@@ -75,7 +75,7 @@ fig3d = ggplot(data=dens_df, aes(x=x, y=density, ymax=density, ymin=1e-5, col=gr
   geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") +
   coord_cartesian(ylim = c(1.0e-4, 5), expand=FALSE) +
   ylab(expression(paste("PDF" ) ) ) +
-  xlab("PageRank Centrality")
+  xlab("D: PageRank Centrality")
 fig3d
 
 
@@ -113,7 +113,7 @@ fig3e = ggplot(data=dens_df, aes(x=x, y=density, ymax=density, ymin=1e-5, col=gr
   coord_cartesian(ylim = c(1.0e-4, 5), xlim = c(0, density_mif_xd$x[xd_end]), expand=FALSE) +
   geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") +
   ylab(expression(paste("PDF" ) ) ) +
-  xlab("Mean publication impact factor")
+  xlab("E: Mean publication impact factor")
 # fig3d
 
 
@@ -152,7 +152,7 @@ fig3f = ggplot(data=dens_df, aes(x=x, y=density, ymax=density, ymin=1e-6, col=gr
   coord_cartesian(ylim = c(1.0e-6, 1e-2), expand=FALSE) +
   geom_vline(data = mu, aes(xintercept=grp.mean, color = XDIndicator), linetype = "dashed") +
   ylab(expression(paste("PDF" ) ) ) +
-  xlab("Total career citations")
+  xlab("F: Total career citations")
 # fig3f
 
 

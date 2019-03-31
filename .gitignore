@@ -4,3 +4,4 @@
 *.gz
 .Rproj.user
 .RData
+.Rhistory

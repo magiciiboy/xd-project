@@ -45,8 +45,8 @@ par(cex=2)
 max_comp[max_comp==1] = NA
 max_comp_perc = max_comp / original_size
 
-p1_mean = rowMeans(max_comp_perc, na.rm = TRUE)
-p1_var = rowVars(max_comp_perc, na.rm = TRUE)
+p1_mean = rowMeans(max_comp_perc[,1:10], na.rm = TRUE)
+p1_var = rowVars(max_comp_perc[,1:10], na.rm = TRUE)
 
 plot(x=(1:g_ecount)/g_ecount, y=p1_mean, type="l", ylim=range(0,1), xlim=range(0,1), lwd = 2,
      xlab="Fraction of Removed Links", ylab="Size of Giant Component")
