@@ -1,4 +1,5 @@
 import os
+import math
 import pandas as pd
 
 df_scholars = pd.read_csv('../../data/Faculty_GoogleScholar_Funding_Data_N4190.csv')
@@ -42,19 +43,27 @@ def compute_paper_orientation(p):
                 depts.append(a)
     return 1 if '0' in depts and '1' in depts else 0
 
-def compute_dummy_year(p):
-    return 0
+def compute_scholar_xd(p):
+    gid = p['s']
+    return 1 if scholars[gid]['XDIndicator'] == 'XD' else 0
+
 
 # Add new column to process papers data
 df_papers['a'] = df_papers.apply(lambda row: compute_coauthor(row), axis=1)
 df_papers['tau'] = df_papers.apply(lambda row: compute_career_age(row), axis=1)
 df_papers['I'] = df_papers.apply(lambda row: compute_paper_orientation(row), axis=1)
-# df_papers['Dt'] = df_papers.apply(lambda row: compute_dummy_year(row), axis=1)
+df_papers['ln_a'] = df_papers.apply(lambda row: math.log(row['a']) if row['a'] > 0 else 0, axis=1)
+df_papers['XD'] = df_papers.apply(lambda row: compute_scholar_xd(row), axis=1)
 
 print(df_papers.columns)
 # help(pd.read_csv)
 
-df_papers_o1 = df_papers[df_papers['I']==1]
-print(df_papers_o1.shape)
+# df_papers_o1 = df_papers[df_papers['I']==1]
+# print(df_papers_o1.shape)
 
-df_papers.to_csv('./panel_model_paper_citations_data.csv')
+df_papers_xd = df_papers[df_papers['XD']==1]
+
+df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
+df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
+
+
