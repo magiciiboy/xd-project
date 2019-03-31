@@ -1,30 +1,71 @@
 import os
 import math
+from statistics import stdev, mean
 import pandas as pd
 
 df_scholars = pd.read_csv('../../data/Faculty_GoogleScholar_Funding_Data_N4190.csv')
-df_papers = pd.read_csv('../../data/GoogleScholar_paper_stats.csv', names=['s', 't', 'z', 'coauthors'])
+df_papers = pd.read_csv('../../data/GoogleScholar_paper_stats.csv', names=['i', 't', 'c', 'coauthors'])
 
 shape_scholars = df_scholars.shape  # (4190, 25)
 shape_papers = df_papers.shape      # (424827, 4)
 
 df_papers_2017 = df_papers[df_papers['t'] <= 2017]
-print(df_papers_2017.shape)
+# print(df_papers_2017.shape)
 
 # print(df_scholars.columns)
 
-# exit()
+# Cached mu, sigma for y,t
+cached_mu_sigma = dict()
+idx = 0
+
 # Map scholars to dict
 scholars = dict()
 for index, s_row in df_scholars.iterrows():
     scholars[s_row['google_id']] = s_row
 
+def compute_logc(p):
+    return math.log(1 + (p['c'] or 0))
+
+def compute_dept(p):
+    return scholars[p['i']]['dept']
+
+def compute_z_score(p):
+    # global idx
+    # idx += 1
+    # if idx % 1000:
+    #     print ("- Percentage: %s %") % (idx / shape_papers[0] * 100)
+
+    c_ipst = p['c']
+    i = p['i']
+    t = p['t']
+    s = p['dept']
+
+    # Year t, disciplinary s
+    str_st = '%s_%s' % (t, s)
+    if str_st in cached_mu_sigma:
+        (mu_t, sigma_t) = cached_mu_sigma[str_st]
+    else:
+        df_papers_st = df_papers[(df_papers['dept']==s) & (df_papers['t']==t)]
+        df_papers_st['ln_c'] = df_papers_st.apply(lambda row: compute_logc(row), axis=1)
+
+        mu_t = df_papers_st['ln_c'].mean()
+        sigma_t = df_papers_st['ln_c'].std()
+
+        cached_mu_sigma[str_st] = (mu_t, sigma_t)
+
+        del df_papers_st
+
+    # Compare the paper p of scholar i with other papers in same department
+    # in the same year
+    z_ip = (math.log(1 + c_ipst) - mu_t) / sigma_t
+    return z_ip
+
 def compute_coauthor(p):
     coauthors = (p.get('coauthors') or '').split(',')
-    return len(coauthors) - 1
+    return len(coauthors) or 1
 
 def compute_career_age(p):
-    gid = p['s']
+    gid = p['i']
     career_age = int(p['t']) - int(scholars[gid]['min_year']) + 1 if gid in scholars else 1
     return career_age
 
@@ -44,16 +85,26 @@ def compute_paper_orientation(p):
     return 1 if '0' in depts and '1' in depts else 0
 
 def compute_scholar_xd(p):
-    gid = p['s']
+    gid = p['i']
     return 1 if scholars[gid]['XDIndicator'] == 'XD' else 0
 
 
 # Add new column to process papers data
+print('Computing dept ...')
+df_papers['dept'] = df_papers.apply(lambda row: compute_dept(row), axis=1)
+print('Computing a ...')
 df_papers['a'] = df_papers.apply(lambda row: compute_coauthor(row), axis=1)
+print('Computing tau ...')
 df_papers['tau'] = df_papers.apply(lambda row: compute_career_age(row), axis=1)
+print('Computing I ...')
 df_papers['I'] = df_papers.apply(lambda row: compute_paper_orientation(row), axis=1)
+print('Computing ln(a) ...')
 df_papers['ln_a'] = df_papers.apply(lambda row: math.log(row['a']) if row['a'] > 0 else 0, axis=1)
+print('Computing XD ...')
 df_papers['XD'] = df_papers.apply(lambda row: compute_scholar_xd(row), axis=1)
+print('Computing z-score ...')
+
+df_papers['z'] = df_papers.apply(lambda row: compute_z_score(row), axis=1)
 
 print(df_papers.columns)
 # help(pd.read_csv)
@@ -65,5 +116,6 @@ df_papers_xd = df_papers[df_papers['XD']==1]
 
 df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
 df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
+
 
 
