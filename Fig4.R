@@ -77,7 +77,7 @@ summary(genomicmodel)
 
 ###Tried to Scale the data - it came out really weird
 lm(scale(your.y) ~ scale(your.x), data=your.Data)
-genomicscale <- lm(scale(genomic$Ci) ~ scale(sr + hi + tdnsf + nnsf + tdnih + nnih + prc + chi + bio + cs + xd + one + two + three + four + five + six + seven + eight + nine + ten + eleven + twelve + thirteen + fourteen), data = genomic)
+genomicscale <- lm(scale(genomic$Ci) ~ scale(sr) + scale(hi) + scale(tdnsf) + scale(nnsf) + scale(tdnih) + scale(nnih) + scale(prc) + scale(chi) + factor(bio) + factor(cs) + factor(xd) + factor(one) + factor(two) + factor(three) + factor(four) + factor(five) + factor(six) + factor(seven) + factor(eight) + factor(nine) + factor(ten) + factor(eleven) + factor(twelve) + factor(thirteen) + factor(fourteen), data = genomic)
 summary(genomicscale)
 
 ###check summary data with table s2 when done... within 5% of example data
