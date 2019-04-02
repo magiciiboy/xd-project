@@ -71,12 +71,12 @@ def compute_career_age(p):
 
 def compute_paper_orientation(p):
     coauthors = (p.get('coauthors') or '').split(',')
+    dept_map = {'CS': '1', 'BIO': '0'}
     depts = []
     o = 0
     for a in coauthors:
         if a not in ['0', '1', '2']:
             a_dept = scholars[a]['dept']
-            dept_map = {'CS': '1', 'BIO': '0'}
             if dept_map[a_dept] not in depts:
                 depts.append(dept_map[a_dept])
         else:
@@ -88,22 +88,55 @@ def compute_scholar_xd(p):
     gid = p['i']
     return 1 if scholars[gid]['XDIndicator'] == 'XD' else 0
 
+def compute_pagerank(p):
+    gid = p['i']
+    pr = scholars[gid]['PRCentrality']
+    return math.log(pr) if pr else None
+
+def compute_bridge_ratio(p):
+    coauthors = (p.get('coauthors') or '').split(',')
+    dept_map = {'CS': '1', 'BIO': '0'}
+    depts = []
+    dept_from = dept_map[scholars[p['i']]['dept']]
+    o = 0
+    for a in coauthors:
+        if a not in ['0', '1', '2']:
+            a_dept = scholars[a]['dept']
+            depts.append(dept_map[a_dept])
+        else:
+            depts.append(a)
+    ratio = len([x for x in depts if x != dept_from]) / len(depts)
+    if not ratio:
+        ratio = 0.0001
+    return math.log(ratio)
+
 
 # Add new column to process papers data
 print('Computing dept ...')
 df_papers['dept'] = df_papers.apply(lambda row: compute_dept(row), axis=1)
+
 print('Computing a ...')
 df_papers['a'] = df_papers.apply(lambda row: compute_coauthor(row), axis=1)
+
 print('Computing tau ...')
 df_papers['tau'] = df_papers.apply(lambda row: compute_career_age(row), axis=1)
+
 print('Computing I ...')
 df_papers['I'] = df_papers.apply(lambda row: compute_paper_orientation(row), axis=1)
+
 print('Computing ln(a) ...')
 df_papers['ln_a'] = df_papers.apply(lambda row: math.log(row['a']) if row['a'] > 0 else 0, axis=1)
+
 print('Computing XD ...')
 df_papers['XD'] = df_papers.apply(lambda row: compute_scholar_xd(row), axis=1)
-print('Computing z-score ...')
 
+print('Computing PR ...')
+df_papers['PR'] = df_papers.apply(lambda row: compute_pagerank(row), axis=1)
+
+print('Computing Bridge ratio ...')
+df_papers['lamda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
+
+print('Computing z-score ...')
 df_papers['z'] = df_papers.apply(lambda row: compute_z_score(row), axis=1)
 
 print(df_papers.columns)
