@@ -1,0 +1,30 @@
+% !Rnw root = ../ProjectReport.Rnw
+\begin{table}[h]
+\begin{tabular}{m{5cm} m{1.5cm} m{1.5cm} m{1.5cm} m{1.5cm} p{1.5cm} p{1.5cm} }
+\hline
+\hline
+& \multicolumn{2}{c}{\textbf{CV}} & \multicolumn{2}{c}{\textbf{CV + Network}} & \multicolumn{2}{c}{\textbf{CV + Network [Standardized]}} \\ \hline
+\multicolumn{7}{l}{\textbf{CV parameters}} \\
+{Department rank, $\beta_r$}          & -0.052***  & (0.006) & -0.047***  & (0.006) & -0.056***   & (0.007) \\
+{Productivity ($h$-index), $\beta_h$} & 1.857***   & (0.018) & 1.866***   & (0.018) & 1.179***    & (0.012) \\
+{Total NSF funding, $\beta_{\$1}$}    & -0.004*    & (0.002) & -0.005**   & (0.002) & -0.031**    & (0.012) \\
+{\# of NSF grants , $\beta_{N1}$}     & 0.018      & (0.012) & 0.010      & (0.012) & 0.011       & (0.013) \\
+{Total NIH funding, $\beta_{\$2}$}    & 0.015***   & (0.003) & 0.018***   & (0.003) & 0.072***    & (0.018) \\
+{\# of NIH grants, $\beta_{N2}$}      & -0.062***  & (0.016) & -0.054**   & (0.017) & -0.060**    & (0.018) \\ \hline
+
+\multicolumn{7}{l}{\textbf{Network parameters}} \\
+{PageRank Centrality, $\beta_{\zeta PR}$}   &  &            & 0.041**     & (0.014) & 0.026**   & (0.009) \\
+{Cross-displinary, $\beta_{\chi}$}       &  &            & 0.567***    & (0.061) & 0.085***  & (0.009) \\ \hline
+
+{Discipline ($O$) dummy}                & Y &  & Y &  & Y &  \\
+{5-year cohort ($y_{i,5^0}$) dummy}   & Y &  & Y &  & Y & \\
+{Constant}                            & 1.400*** & (0.233) & 1.708*** & (0.271) & 7.743*** & (0.216) \\ \hline
+
+{n}                                   & 4,190 &  & 3,900 &  & 3,900 & \\
+{adj. $R^2$}                          & 0.883 &  & 0.882 &  & 0.882 & \\ \hline \hline
+\multicolumn{7}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
+
+\end{tabular}
+\caption{Career data set: Poolel cross-sectional model}
+\label{tbl:sT2}
+\end{table}

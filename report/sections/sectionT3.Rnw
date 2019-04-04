@@ -1,0 +1,57 @@
+% !Rnw root = ../ProjectReport.Rnw
+\begin{table}[h]
+\begin{tabular}{m{5cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} }
+\hline
+\hline
+& \textbf{(a)} & \textbf{(b)} & \textbf{(c)} & \textbf{(d)} & \textbf{(e)} \\
+& {$C^{PR}$} & {$C^{B}$} & {$C^{D}$} & \sout{$\beta_{N1}, \beta_{N2}$} & \sout{$\beta_{r}$} \\ \hline
+
+\multicolumn{6}{l}{\textbf{CV parameters}} \\
+\rowcolor{lightgray}
+{Department rank, $\beta_r$}          & -0.047*** & -0.042*** & -0.044*** & -0.046*** &           \\
+                                      & (0.006)   & (0.006)   & (0.006)   & (0.006)   &           \\
+\rowcolor{lightgray}                               
+{Productivity ($h$-index), $\beta_h$} & 1.866***  & 1.901***  & 1.848***  & 1.862***  & 1.892***  \\
+                                      & (0.018)   & (0.019)   & (0.018)   & (0.018)   & (0.018)   \\
+\rowcolor{lightgray}
+{Total NSF funding, $\beta_{\$1}$}    & -0.005**  & -0.004*   & -0.004*   & -0.003**  & -0.004*   \\
+                                      & (0.002)   & (0.002)   & (0.002)   & (0.001)   & (0.002)   \\
+\rowcolor{lightgray}
+{\# of NSF grants , $\beta_{N1}$}     & 0.010     & 0.009     & 0.005     &           & 0.004     \\
+                                      & (0.012)   & (0.012)   & (0.012)   &           & (0.012)   \\
+\rowcolor{lightgray}
+{Total NIH funding, $\beta_{\$2}$}    & 0.018***  & 0.012***  & 0.012***  & 0.003*    & 0.012***  \\
+                                      & (0.003)   & (0.003)   & (0.003)   & (0.001)   & (0.003)   \\
+\rowcolor{lightgray}
+{\# of NIH grants, $\beta_{N2}$}      & -0.054**  & -0.056**  & -0.055**  &           & -0.052**  \\
+                                      & (0.017)   & (0.017)   & (0.017)   &           & (0.017)   \\ \hline
+
+\multicolumn{6}{l}{\textbf{Network parameters}} \\
+{PageRank Centrality, $\beta_{\zeta PR}$}     & 0.041** &  &              & 0.042**   & 0.057***  \\ 
+                                              & (0.014) &  &              & (0.014)   & (0.014)   \\
+{Betweeness Centrality, $\beta_{\zeta B}$}    &  & -0.0003 &  &  &  \\ 
+                                              &  & (0.005) & & & \\
+{Degree Centrality, $\beta_{\zeta D}$}        &  &  & 0.052*** & & \\ 
+                                              &  &  & (0.010) & & \\
+\rowcolor{lightgray}
+{Cross-displinary, $\beta_{\chi}$}          & 0.567***  & 0.560***  & 0.526***  & 0.579***  & 0.552***  \\
+                                            & (0.061)   & (0.062)   & (0.061)   & (0.061)   & (0.061) \\ \hline
+
+\rowcolor{lightgray}
+{Discipline ($O$) dummy}                & Y & Y & Y & Y & Y  \\
+\rowcolor{lightgray}
+{5-year cohort ($y_{i,5^0}$) dummy}   & Y & Y & Y & Y & Y \\
+\rowcolor{lightgray}
+{Constant}                            & 1.708***  & 1.204***  & 1.345***  & 1.711***  & 1.617***  \\ 
+                                      & (0.271)   & (0.225)   & (0.226)   & (0.270)   & (0.272)   \\ \hline
+
+\rowcolor{lightgray}
+{n}                                   & 3,900 & 3,387 & 3,900 & 3,900 & 3,900 \\
+\rowcolor{lightgray}
+{adj. $R^2$}                          & 0.882 & 0.873 & 0.883 & 0.882 & 0.881 \\ \hline \hline
+\multicolumn{6}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
+
+\end{tabular}
+\caption{Career data set: Poolel cross-sectional model - Robustness check}
+\label{tbl:sT3}
+\end{table}

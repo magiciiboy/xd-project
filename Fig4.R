@@ -83,4 +83,3 @@ summary(genomicscale)
 ###check summary data with table s2 when done... within 5% of example data
 
 ###plot it
-

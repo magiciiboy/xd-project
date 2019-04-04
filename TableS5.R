@@ -31,6 +31,7 @@ std_beta(model_NoFE)
 # summary(model_NoFE_std)
 
 # Model: FE
+# lmer 
 # model_FE <- plm(z ~ ln_a + tau + I + factor(t), data=dat, index=c("i", "X"), model="within", effect="individual")
 model_FE <- lm(z ~ ln_a + tau + I + factor(t) + factor(i), data=dat)
 summary(model_FE)

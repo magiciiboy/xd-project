@@ -19,6 +19,8 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{babel,blindtext}
+\usepackage{ulem}
+\usepackage{tabularx}
 \usepackage[table]{xcolor}
 \graphicspath{ {../output/} }
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -60,91 +62,96 @@ Yifan Zhang & Preprocess Data, and draw plot of Figure 4 \\ \hline
 % !Rnw root = ../ProjectReport.Rnw
 
 \newpage
-\section{Supplementary Table S4}
+\section{Supplementary Table S2}
 % !Rnw root = ../ProjectReport.Rnw
 \begin{table}[h]
-\begin{tabular}{m{5cm} m{3.0cm} m{3cm} m{2.5cm} m{2.7cm}}
+\begin{tabular}{m{5cm} m{1.5cm} m{1.5cm} m{1.5cm} m{1.5cm} p{1.5cm} p{1.5cm} }
 \hline
 \hline
-& \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
-\multicolumn{5}{l}{\textbf{Publication characteristics}} \\
-\rowcolor{lightgray}
-{\# of author, $\beta_\alpha$} & x1 & x2 & 0.312*** & x4 \\
-                             & (x1) & (x2) & (0.00262) & (x4) \\
-\rowcolor{lightgray}
-{Career age, $\beta_\tau$} & x1 & x2 & -0.00949*** & x4 \\
-                         & (x1) & (x2) & (0.00156) & (x4) \\
-\rowcolor{lightgray}
-{Cross-disciplinary indicator, $\beta_I$} & x1 & x2 & 0.14529*** & x4 \\
-                                        & (x1) & (x2) & (0.01578) & (x4) \\ \hline
-\multicolumn{5}{l}{\textbf{Network characteristics}} \\
-\rowcolor{lightgray}
-{Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
-                             & (x1) & (x2) &  &  \\
-\rowcolor{lightgray}
-{Bridge ratio, $\beta_\lambda$} & x1 & x2 & X & X \\
-                             & (x1) & (x2) &  &  \\
-\rowcolor{lightgray}
-{Discipline ($F$) dummy}     & x1 & x2 & X & X \\
-                             & (x1) & (x2) & &  \\
-\rowcolor{lightgray}
-{Constant}                 & x1 & x2 & -0.2904 & x4 \\
-                         & (x1) & (x2) & (???) & (x4) \\
-\rowcolor{lightgray}
-{Year dummy}            & Y & Y & Y & Y \\ \hline
-\rowcolor{lightgray}
-{n}                      & 413,565 & 413,565 & 413,565 & 413,565 \\
-\rowcolor{lightgray}
-{adj. $R^2$}             & x1 & x2 & x3 & x4 \\ \hline \hline
-\multicolumn{5}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
+& \multicolumn{2}{c}{\textbf{CV}} & \multicolumn{2}{c}{\textbf{CV + Network}} & \multicolumn{2}{c}{\textbf{CV + Network [Standardized]}} \\ \hline
+\multicolumn{7}{l}{\textbf{CV parameters}} \\
+{Department rank, $\beta_r$}          & -0.052***  & (0.006) & -0.047***  & (0.006) & -0.056***   & (0.007) \\
+{Productivity ($h$-index), $\beta_h$} & 1.857***   & (0.018) & 1.866***   & (0.018) & 1.179***    & (0.012) \\
+{Total NSF funding, $\beta_{\$1}$}    & -0.004*    & (0.002) & -0.005**   & (0.002) & -0.031**    & (0.012) \\
+{\# of NSF grants , $\beta_{N1}$}     & 0.018      & (0.012) & 0.010      & (0.012) & 0.011       & (0.013) \\
+{Total NIH funding, $\beta_{\$2}$}    & 0.015***   & (0.003) & 0.018***   & (0.003) & 0.072***    & (0.018) \\
+{\# of NIH grants, $\beta_{N2}$}      & -0.062***  & (0.016) & -0.054**   & (0.017) & -0.060**    & (0.018) \\ \hline
+
+\multicolumn{7}{l}{\textbf{Network parameters}} \\
+{PageRank Centrality, $\beta_{\zeta PR}$}   &  &            & 0.041**     & (0.014) & 0.026**   & (0.009) \\
+{Cross-displinary, $\beta_{\chi}$}       &  &            & 0.567***    & (0.061) & 0.085***  & (0.009) \\ \hline
+
+{Discipline ($O$) dummy}                & Y &  & Y &  & Y &  \\
+{5-year cohort ($y_{i,5^0}$) dummy}   & Y &  & Y &  & Y & \\
+{Constant}                            & 1.400*** & (0.233) & 1.708*** & (0.271) & 7.743*** & (0.216) \\ \hline
+
+{n}                                   & 4,190 &  & 3,900 &  & 3,900 & \\
+{adj. $R^2$}                          & 0.883 &  & 0.882 &  & 0.882 & \\ \hline \hline
+\multicolumn{7}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
 
 \end{tabular}
-\caption{Career data set: Panel model on all falcuty}
-\label{tbl:sT5}
+\caption{Career data set: Poolel cross-sectional model}
+\label{tbl:sT2}
 \end{table}
 
 \newpage
-\section{Supplementary Table S5}
+\section{Supplementary Table S3}
 % !Rnw root = ../ProjectReport.Rnw
 \begin{table}[h]
-\begin{tabular}{m{5cm} m{3.0cm} m{3cm} m{2.5cm} m{2.7cm}}
+\begin{tabular}{m{5cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} }
 \hline
 \hline
-& \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
-\multicolumn{5}{l}{\textbf{Publication characteristics}} \\
+& \textbf{(a)} & \textbf{(b)} & \textbf{(c)} & \textbf{(d)} & \textbf{(e)} \\
+& {$C^{PR}$} & {$C^{B}$} & {$C^{D}$} & \sout{$\beta_{N1}, \beta_{N2}$} & \sout{$\beta_{r}$} \\ \hline
+
+\multicolumn{6}{l}{\textbf{CV parameters}} \\
 \rowcolor{lightgray}
-{\# of author, $\beta_\alpha$} & x1 & x2 & 0.351*** & 0.234*** \\
-                             & (x1) & (x2) & (0.00392) & (0.0059) \\
+{Department rank, $\beta_r$}          & -0.047*** & -0.042*** & -0.044*** & -0.046*** &           \\
+                                      & (0.006)   & (0.006)   & (0.006)   & (0.006)   &           \\
+\rowcolor{lightgray}                               
+{Productivity ($h$-index), $\beta_h$} & 1.866***  & 1.901***  & 1.848***  & 1.862***  & 1.892***  \\
+                                      & (0.018)   & (0.019)   & (0.018)   & (0.018)   & (0.018)   \\
 \rowcolor{lightgray}
-{Career age, $\beta_\tau$} & x1 & x2 & -0.00617* & -0.00636* \\
-                         & (x1) & (x2) & (0.00253) & (0.00261) \\
+{Total NSF funding, $\beta_{\$1}$}    & -0.005**  & -0.004*   & -0.004*   & -0.003**  & -0.004*   \\
+                                      & (0.002)   & (0.002)   & (0.002)   & (0.001)   & (0.002)   \\
 \rowcolor{lightgray}
-{Cross-disciplinary indicator, $\beta_I$} & x1 & x2 &  0.112*** & 0.112*** \\
-                                        & (x1) & (x2) & (0.01628) & (0.01628) \\ \hline
-\multicolumn{5}{l}{\textbf{Network characteristics}} \\
+{\# of NSF grants , $\beta_{N1}$}     & 0.010     & 0.009     & 0.005     &           & 0.004     \\
+                                      & (0.012)   & (0.012)   & (0.012)   &           & (0.012)   \\
 \rowcolor{lightgray}
-{Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
-                             & (x1) & (x2) &  &  \\
+{Total NIH funding, $\beta_{\$2}$}    & 0.018***  & 0.012***  & 0.012***  & 0.003*    & 0.012***  \\
+                                      & (0.003)   & (0.003)   & (0.003)   & (0.001)   & (0.003)   \\
 \rowcolor{lightgray}
-{Bridge ratio, $\beta_\lambda$} & x1 & x2 & X & X \\
-                             & (x1) & (x2) & & \\
+{\# of NIH grants, $\beta_{N2}$}      & -0.054**  & -0.056**  & -0.055**  &           & -0.052**  \\
+                                      & (0.017)   & (0.017)   & (0.017)   &           & (0.017)   \\ \hline
+
+\multicolumn{6}{l}{\textbf{Network parameters}} \\
+{PageRank Centrality, $\beta_{\zeta PR}$}     & 0.041** &  &              & 0.042**   & 0.057***  \\ 
+                                              & (0.014) &  &              & (0.014)   & (0.014)   \\
+{Betweeness Centrality, $\beta_{\zeta B}$}    &  & -0.0003 &  &  &  \\ 
+                                              &  & (0.005) & & & \\
+{Degree Centrality, $\beta_{\zeta D}$}        &  &  & 0.052*** & & \\ 
+                                              &  &  & (0.010) & & \\
 \rowcolor{lightgray}
-{Discipline ($F$) dummy}     & x1 & x2 & X & X \\
-                             & (x1) & (x2) & & \\
+{Cross-displinary, $\beta_{\chi}$}          & 0.567***  & 0.560***  & 0.526***  & 0.579***  & 0.552***  \\
+                                            & (0.061)   & (0.062)   & (0.061)   & (0.061)   & (0.061) \\ \hline
+
 \rowcolor{lightgray}
-{Constant}                 & x1 & x2 & ??? & ??? \\
-                         & (x1) & (x2) & (???) & (???) \\
+{Discipline ($O$) dummy}                & Y & Y & Y & Y & Y  \\
 \rowcolor{lightgray}
-{Year dummy}            & Y & Y & Y & Y \\ \hline
+{5-year cohort ($y_{i,5^0}$) dummy}   & Y & Y & Y & Y & Y \\
 \rowcolor{lightgray}
-{n}                      & 166,621 & 166,621 & 166,621 & 166,621 \\
+{Constant}                            & 1.708***  & 1.204***  & 1.345***  & 1.711***  & 1.617***  \\ 
+                                      & (0.271)   & (0.225)   & (0.226)   & (0.270)   & (0.272)   \\ \hline
+
 \rowcolor{lightgray}
-{adj. $R^2$}             & x1 & x2 & 0.049 & 0.049 \\ \hline \hline
-\multicolumn{5}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
+{n}                                   & 3,900 & 3,387 & 3,900 & 3,900 & 3,900 \\
+\rowcolor{lightgray}
+{adj. $R^2$}                          & 0.882 & 0.873 & 0.883 & 0.882 & 0.881 \\ \hline \hline
+\multicolumn{6}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
 
 \end{tabular}
-\caption{Career data set: Panel model on all $XD_F$ falcuty}
-\label{tbl:sT5}
+\caption{Career data set: Poolel cross-sectional model - Robustness check}
+\label{tbl:sT3}
 \end{table}
 
 \bigskip   % leave some empty space (optional)

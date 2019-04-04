@@ -19,6 +19,8 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{babel,blindtext}
+\usepackage{ulem}
+\usepackage{tabularx}
 \usepackage[table]{xcolor}
 \graphicspath{ {../output/} }
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -48,12 +50,12 @@
 \SweaveInput{./sections/section4.Rnw}
 
 \newpage
-\section{Supplementary Table S4}
-\SweaveInput{./sections/sectionT4.Rnw}
+\section{Supplementary Table S2}
+\SweaveInput{./sections/sectionT2.Rnw}
 
 \newpage
-\section{Supplementary Table S5}
-\SweaveInput{./sections/sectionT5.Rnw}
+\section{Supplementary Table S3}
+\SweaveInput{./sections/sectionT3.Rnw}
 
 \bigskip   % leave some empty space (optional)
 
