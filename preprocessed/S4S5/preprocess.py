@@ -94,22 +94,12 @@ def compute_pagerank(p):
     return math.log(pr) if pr else None
 
 def compute_bridge_ratio(p):
-    coauthors = (p.get('coauthors') or '').split(',')
-    dept_map = {'CS': '1', 'BIO': '0'}
-    depts = []
-    dept_from = dept_map[scholars[p['i']]['dept']]
-    o = 0
-    for a in coauthors:
-        if a not in ['0', '1', '2']:
-            a_dept = scholars[a]['dept']
-            depts.append(dept_map[a_dept])
-        else:
-            depts.append(a)
-    ratio = len([x for x in depts if x != dept_from]) / len(depts)
-    if not ratio:
-        ratio = 0.0001
+    gid = p['i']
+    ratio = 0.0001
+    if scholars[gid].get('KTotal') and scholars[gid].get('KMediated'):
+        ratio = scholars[gid]['KMediated'] / scholars[gid]['KTotal']
+        print('Ratio', ratio)
     return math.log(ratio)
-
 
 # Add new column to process papers data
 print('Computing dept ...')

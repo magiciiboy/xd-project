@@ -1,5 +1,6 @@
-\documentclass[10pt]{article}         % the type of document and font size (default 10pt)
-\usepackage[margin=1.0in]{geometry}   % sets all margins to 1in, can be changed
+\documentclass[10pt]{article}          % the type of document and font size (default 10pt)
+\usepackage[a4paper, tmargin=1.0in, bmargin=1.0in, lmargin=0.5in, rmargin=0.5in]{geometry}   
+                                      % sets all margins to 1in, can be changed
 \usepackage{moreverb}                 % for verbatimtabinput -- LaTeX environment
 \usepackage{url}                      % for \url{} command
 \usepackage{amssymb}                  % for many mathematical symbols
@@ -18,6 +19,7 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{babel,blindtext}
+\usepackage[table]{xcolor}
 \graphicspath{ {../output/} }
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \renewcommand{\baselinestretch}{1.5}
@@ -45,170 +47,105 @@
 \begin{tabular}{|l|l|}
 \hline
 \textbf{Member} & \textbf{Contribution} \\ \hline
-Bradley Macdonald & 3A 3B 3C S2\\ \hline
-Tung Huynh & 2A 2B S3 S4\\ \hline
-Yifan Zhang & 3D 3E 3F S1\\ \hline
+Bradley Macdonald & Preprocess data and create regression models of Figure 4\\ \hline
+Tung Huynh & Preprocess Data, create regression models of Table S4, Table S5\\ \hline
+Yifan Zhang & Preprocess Data, and draw plot of Figure 4 \\ \hline
 \end{tabular}
 \caption{Contribution of group members}
 \label{tbl:contribution}
 \end{table}
 
 \newpage
-\section{Figure 2}
+\section{Figure 4}
 % !Rnw root = ../ProjectReport.Rnw
-\begin{figure}[!htb]
-  \minipage{0.32\textwidth}
-    \textbf{1990}\\
-    \includegraphics[width=5cm, height=5cm]{Fig2A1990.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{1995}\\
-    \includegraphics[width=5cm, height=5cm]{Fig2A1995.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}%
-    \textbf{2000}\\
-    \includegraphics[width=5cm, height=5cm]{Fig2A2000.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{2005}\\
-    \includegraphics[width=5cm, height=5cm]{Fig2A2005.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{2010}\\
-    \includegraphics[width=5cm, height=5cm]{Fig2A2010.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}%
-    \textbf{2015}\\
-    \includegraphics[width=5cm, height=5cm]{Fig2A2015.png}
-  \endminipage
-  \caption{Growth of cross-disciplinary social capital}
-  \label{fig:2A}
-\end{figure}
-
-This figure depicts the evolution of the giant component in the U.S. biology-computing network of collaborations. It consists of six consecutive periods from 1990 to 2015. Each period illustrates the collaborations of the two departments in five previous years. While green and magenta nodes represent faculty $F_i$ in $BIO$ and $CS$ department, respectively; black vertices represent faculty $F_i$ that published at least one cross-disciplinary publication. In this figure, node size is proportional to the logarithm of the degree centrality, the total number of collaborations of the faculty.
-
-In the first network of the year 1990, the giant component only consists of links between CS nodes. In the period from 1900 to 2005, in which the HGP happens, the networks represent the establishment of cross-disciplinary collaborations. Finally, in the last period from 2005 to 2015, the giant component does not only expands in term of the number of collaborations and robustness, but it also notably illustrates the significant role of $XD$ group containing the largest nodes in the network.
 
 \newpage
+\section{Supplementary Table S4}
 % !Rnw root = ../ProjectReport.Rnw
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=10cm, height=7cm]{Fig2B.png}
-  \caption{Evolution of the fraction of cross-disciplinary collaboration links}
-  \label{fig:2B}
-\end{figure}
+\begin{table}[h]
+\begin{tabular}{m{5cm} m{3.0cm} m{3cm} m{2.5cm} m{2.7cm}}
+\hline
+\hline
+& \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
+\multicolumn{5}{l}{\textbf{Publication characteristics}} \\
+\rowcolor{lightgray}
+{\# of author, $\beta_\alpha$} & x1 & x2 & 0.312*** & x4 \\
+                             & (x1) & (x2) & (0.00262) & (x4) \\
+\rowcolor{lightgray}
+{Career age, $\beta_\tau$} & x1 & x2 & -0.00949*** & x4 \\
+                         & (x1) & (x2) & (0.00156) & (x4) \\
+\rowcolor{lightgray}
+{Cross-disciplinary indicator, $\beta_I$} & x1 & x2 & 0.14529*** & x4 \\
+                                        & (x1) & (x2) & (0.01578) & (x4) \\ \hline
+\multicolumn{5}{l}{\textbf{Network characteristics}} \\
+\rowcolor{lightgray}
+{Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
+                             & (x1) & (x2) &  &  \\
+\rowcolor{lightgray}
+{Bridge ratio, $\beta_\lambda$} & x1 & x2 & X & X \\
+                             & (x1) & (x2) &  &  \\
+\rowcolor{lightgray}
+{Discipline ($F$) dummy}     & x1 & x2 & X & X \\
+                             & (x1) & (x2) & &  \\
+\rowcolor{lightgray}
+{Constant}                 & x1 & x2 & -0.2904 & x4 \\
+                         & (x1) & (x2) & (???) & (x4) \\
+\rowcolor{lightgray}
+{Year dummy}            & Y & Y & Y & Y \\ \hline
+\rowcolor{lightgray}
+{n}                      & 413,565 & 413,565 & 413,565 & 413,565 \\
+\rowcolor{lightgray}
+{adj. $R^2$}             & x1 & x2 & x3 & x4 \\ \hline \hline
+\multicolumn{5}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
 
-This figure depicts the evolution of the fraction of collaboration links in the network that are cross-disciplinary. While blue line illustrate the direct $XD$ links, the red line represent the mediated $XD$ links by pollinators. The orange area in the middle annotates the HGP project period from 1990 to 2013.
-
-According to our observation, during the HGP project period (1990-2003), the ratio of direct and mediate $XD$ collaboration steadily keeps having a mild increase. This change marks the strong establishment of cross-disciplinary orientation. The effectiveness of that collaboration only remarkably exhibits from 2005 to later when the number of mediate links increases sharply and reachs almost 30\% by 2015. This can be explained by the robustness of the internal network of each individual affiliation and the development of the cross-disciplinary links.
+\end{tabular}
+\caption{Career data set: Panel model on all falcuty}
+\label{tbl:sT5}
+\end{table}
 
 \newpage
-\section{Figure 3}
+\section{Supplementary Table S5}
 % !Rnw root = ../ProjectReport.Rnw
+\begin{table}[h]
+\begin{tabular}{m{5cm} m{3.0cm} m{3cm} m{2.5cm} m{2.7cm}}
+\hline
+\hline
+& \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
+\multicolumn{5}{l}{\textbf{Publication characteristics}} \\
+\rowcolor{lightgray}
+{\# of author, $\beta_\alpha$} & x1 & x2 & 0.351*** & 0.234*** \\
+                             & (x1) & (x2) & (0.00392) & (0.0059) \\
+\rowcolor{lightgray}
+{Career age, $\beta_\tau$} & x1 & x2 & -0.00617* & -0.00636* \\
+                         & (x1) & (x2) & (0.00253) & (0.00261) \\
+\rowcolor{lightgray}
+{Cross-disciplinary indicator, $\beta_I$} & x1 & x2 &  0.112*** & 0.112*** \\
+                                        & (x1) & (x2) & (0.01628) & (0.01628) \\ \hline
+\multicolumn{5}{l}{\textbf{Network characteristics}} \\
+\rowcolor{lightgray}
+{Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
+                             & (x1) & (x2) &  &  \\
+\rowcolor{lightgray}
+{Bridge ratio, $\beta_\lambda$} & x1 & x2 & X & X \\
+                             & (x1) & (x2) & & \\
+\rowcolor{lightgray}
+{Discipline ($F$) dummy}     & x1 & x2 & X & X \\
+                             & (x1) & (x2) & & \\
+\rowcolor{lightgray}
+{Constant}                 & x1 & x2 & ??? & ??? \\
+                         & (x1) & (x2) & (???) & (???) \\
+\rowcolor{lightgray}
+{Year dummy}            & Y & Y & Y & Y \\ \hline
+\rowcolor{lightgray}
+{n}                      & 166,621 & 166,621 & 166,621 & 166,621 \\
+\rowcolor{lightgray}
+{adj. $R^2$}             & x1 & x2 & 0.049 & 0.049 \\ \hline \hline
+\multicolumn{5}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
 
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=12cm, height=18cm]{Fig3All.png}
-  \caption{Descriptive statistics of the career dataset}
-  \label{Fig3}
-\end{figure}
-
-Figures 3 a-F, are probability distributions of the following data: year of first publication, total number of collaborators, the fraction of collaborators who are XD, PageRank centrality of professors within the network, and mean impact factor of the publication record of professors within the network. The data visualization above supports a conclusion that XD professors are more collaborative than BIO or CS specific professors. Figures 3B, C, and D show that XD professors are more collaborative than their single-discipline counterparts. XD professors are also shown to have greater total degrees of collaboration, a greater fraction of collaborators who themselves are XD, and higher overall PageRank centrality. XD professors also outperform BIO and CS in terms of mean publication impact factor. Figure 3A suggests that XD professors published their first paper in genomics on average before BIO and CS. 
-
-\newpage
-\section{Supplementary S1}
-% !Rnw root = ../ProjectReport.Rnw
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=8cm, height=15cm]{FigS1.png}
-  \caption{Robustness of the F network with respect to link removal}
-  \label{fig:S2ab}
-\end{figure}
-Figure S1a depicts the ratio of the largest component other than the initial giant component within the F network. By randomly removing links, the robustness of the network is tested through the observation of the relative size of the remaining giant component to the next largest subnetwork. Error bars are fitted to points on the curve depicting mean and standard deviation. This ratio slowly declines until a critical point of approximately 0.6, when the network fragments. Figure S1b shows when the network breaks up into significantly smaller subnetworks and the giant component itself degrades. This measured peak breaking point coincides with the steep decline observed in S1a, confirming that at this fraction of links removed, the ratio of giant component to next largest subnetwork declines as well. 
-
-\newpage
-\section{Supplementary S2}
-% !Rnw root = ../ProjectReport.Rnw
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=11cm, height=5cm]{Fig2SA.PNG}
-  \caption{Network Distributions for Direct and Mediated Associations of Biologists}
-  \label{fig:S2A}
-\end{figure}
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=10cm, height=7cm]{Fig2SB.PNG}
-  \caption{Network Distributions for Direct and Mediated Associations of Computer Scientists}
-  \label{fig:S2B}
-\end{figure}
-Figure S2 depicts the number of associations between professors within BIO departments (a), and CS departments (b) with other researchers studying genomics. The dark area shows counts of the direct connections between professors, while the lighter orange area shows counts of mediated connections. Vertical lines represent means of each distribution. Direct links are made when professors within the Fi dataset collaborate to publish a paper. Mediated links are established when professors have a collaborator who exists outside of Fi in common. The histograms above demonstrate the importance of the mediated connections, with regards to the robustness of the network. Thus, professors who are outside of the dataset at hand make an important impact on the social network studied here.  
-
-\newpage
-\section{Supplementary S3}
-% !Rnw root = ../ProjectReport.Rnw
-\begin{figure}[!htb]
-  \minipage{0.32\textwidth}
-    \textbf{Degree}\\
-    \includegraphics[width=5cm, height=5cm]{S3Degree.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{PageRank}\\
-    \includegraphics[width=5cm, height=5cm]{S3PageRank.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}%
-    \textbf{Betweenness}\\
-    \includegraphics[width=5cm, height=5cm]{S3Betweeness.png}
-  \endminipage
-  \caption{Three perspectives on the centrality of $F_i$ in the direct collaboration network}
-  \label{fig:s3}
-\end{figure}
-
-This figure shows the giant connected component of the faculty network using all data up to 2015 from three different perspectives. The position of nodes and links are unchanged in the three networks. And the node sizes change respectively to the three centrality measure including Degree, PageRank, and Betweenness.
-
-While Degree centrality treats the importance of each node equally, PageRank takes into account the prominence of each faculty. Therefore, with the same number of links, a node size of faculty $F_i$ in the network using PageRank centrality measure changes to smaller or larger than its counterpart in the network using Degree centrality measure according to the prominence of his collaborators.
-
-Besides, because the Betweenness centrality measures the number of shortest paths passing through a node, the network using this measure only emphasize on those nodes helping to increase the robustness of the whole network.
-
-Remarkably, regardless of the change of centrality measure using in each network, the group of founders of HGP including Eric Lander always demonstrate their significant role of connecting the cross-disciplinary links with the highest central.
-
-\newpage
-\section{Supplementary S4}
-% !Rnw root = ../ProjectReport.Rnw
-\begin{figure}[!htb]
-  \minipage{0.32\textwidth}
-    \textbf{1990}\\
-    \includegraphics[width=5cm, height=5cm]{S41990.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{1995}\\
-    \includegraphics[width=5cm, height=5cm]{S41995.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}%
-    \textbf{2000}\\
-    \includegraphics[width=5cm, height=5cm]{S42000.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{2005}\\
-    \includegraphics[width=5cm, height=5cm]{S42005.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}
-    \textbf{2010}\\
-    \includegraphics[width=5cm, height=5cm]{S42010.png}
-  \endminipage\hfill
-  \minipage{0.32\textwidth}%
-    \textbf{2015}\\
-    \includegraphics[width=5cm, height=5cm]{S42015.png}
-  \endminipage
-  \caption{Evolution of the nongiant components in the network}
-  \label{fig:s4}
-\end{figure}
-
-This figure depicts the development of the nongiant components in the direct collaboration network. Similarly to Figure 2A and Figure S3, green and magenta nodes represent faculty $F_i$ in BIO and CS department, respectively, while black nodes represent faculty $F_i$ in the XD group. 
-
-Notably, the number of nodes and links decreases significantly from 1990 to 2015. If in the year 1990, due to the lack of cross-disciplinary collaborations, there are some local strong groups of internal collaboration. In the 1991-1995 period, the network also presents the establishment of cross-disciplinary collaboration. However, those groups of collaboration are still local and disjointed. From 2000 to 2010, when the size of local disjointed groups increases and there were links connecting these groups so that they joined to the giant component and disappear in the network of nongiant in those years. Finally, in the year 2015, there are only a few faculties who are left out of the giant robust component.
-
-
-
+\end{tabular}
+\caption{Career data set: Panel model on all $XD_F$ falcuty}
+\label{tbl:sT5}
+\end{table}
 
 \bigskip   % leave some empty space (optional)
 

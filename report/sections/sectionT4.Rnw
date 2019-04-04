@@ -1,0 +1,41 @@
+% !Rnw root = ../ProjectReport.Rnw
+\begin{table}[h]
+\begin{tabular}{m{5cm} m{3.0cm} m{3cm} m{2.5cm} m{2.7cm}}
+\hline
+\hline
+& \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
+\multicolumn{5}{l}{\textbf{Publication characteristics}} \\
+\rowcolor{lightgray}
+{\# of author, $\beta_\alpha$} & x1 & x2 & 0.312*** & x4 \\
+                             & (x1) & (x2) & (0.00262) & (x4) \\
+\rowcolor{lightgray}
+{Career age, $\beta_\tau$} & x1 & x2 & -0.00949*** & x4 \\
+                         & (x1) & (x2) & (0.00156) & (x4) \\
+\rowcolor{lightgray}
+{Cross-disciplinary indicator, $\beta_I$} & x1 & x2 & 0.14529*** & x4 \\
+                                        & (x1) & (x2) & (0.01578) & (x4) \\ \hline
+\multicolumn{5}{l}{\textbf{Network characteristics}} \\
+\rowcolor{lightgray}
+{Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
+                             & (x1) & (x2) &  &  \\
+\rowcolor{lightgray}
+{Bridge ratio, $\beta_\lambda$} & x1 & x2 & X & X \\
+                             & (x1) & (x2) &  &  \\
+\rowcolor{lightgray}
+{Discipline ($F$) dummy}     & x1 & x2 & X & X \\
+                             & (x1) & (x2) & &  \\
+\rowcolor{lightgray}
+{Constant}                 & x1 & x2 & -0.2904 & x4 \\
+                         & (x1) & (x2) & (???) & (x4) \\
+\rowcolor{lightgray}
+{Year dummy}            & Y & Y & Y & Y \\ \hline
+\rowcolor{lightgray}
+{n}                      & 413,565 & 413,565 & 413,565 & 413,565 \\
+\rowcolor{lightgray}
+{adj. $R^2$}             & x1 & x2 & x3 & x4 \\ \hline \hline
+\multicolumn{5}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
+
+\end{tabular}
+\caption{Career data set: Panel model on all falcuty}
+\label{tbl:sT5}
+\end{table}

@@ -22,8 +22,10 @@ model_NoFE <- lm(z ~ ln_a + tau + I + factor(t) + PR + lamda + factor(dept), dat
 summary(model_NoFE)
 
 # Model: No FE (Standardized)
-model_NoFE_std <- lm(scale(z) ~ scale(ln_a) + scale(tau) + scale(I) + factor(t) + scale(PR) + scale(lamda) + factor(dept), data=dat)
-summary(model_NoFE_std)
+std_beta(model_NoFE)
+# Or:
+# model_NoFE_std <- lm(scale(z) ~ scale(ln_a) + scale(tau) + scale(I) + factor(t) + scale(PR) + scale(lamda) + factor(dept), data=dat)
+# summary(model_NoFE_std)
 
 # Model: FE
 model_FE <- plm(z ~ ln_a + tau + I + factor(t), data=dat, index=c("i", "X"), model="within", effect="individual")

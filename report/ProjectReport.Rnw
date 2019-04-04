@@ -1,5 +1,6 @@
-\documentclass[10pt]{article}         % the type of document and font size (default 10pt)
-\usepackage[margin=1.0in]{geometry}   % sets all margins to 1in, can be changed
+\documentclass[10pt]{article}          % the type of document and font size (default 10pt)
+\usepackage[a4paper, tmargin=1.0in, bmargin=1.0in, lmargin=0.5in, rmargin=0.5in]{geometry}   
+                                      % sets all margins to 1in, can be changed
 \usepackage{moreverb}                 % for verbatimtabinput -- LaTeX environment
 \usepackage{url}                      % for \url{} command
 \usepackage{amssymb}                  % for many mathematical symbols
@@ -18,6 +19,7 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{babel,blindtext}
+\usepackage[table]{xcolor}
 \graphicspath{ {../output/} }
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \renewcommand{\baselinestretch}{1.5}
@@ -39,34 +41,19 @@
 
 \newpage
 \section{Contribution}
-\SweaveInput{./sections/contribution.Rnw}
+\SweaveInput{./sections/contribution2.Rnw}
 
 \newpage
-\section{Figure 2}
-\SweaveInput{./sections/section2A.Rnw}
+\section{Figure 4}
+\SweaveInput{./sections/section4.Rnw}
 
 \newpage
-\SweaveInput{./sections/section2B.Rnw}
+\section{Supplementary Table S4}
+\SweaveInput{./sections/sectionT4.Rnw}
 
 \newpage
-\section{Figure 3}
-\SweaveInput{./sections/section3A.Rnw}
-
-\newpage
-\section{Supplementary S1}
-\SweaveInput{./sections/sectionS1.Rnw}
-
-\newpage
-\section{Supplementary S2}
-\SweaveInput{./sections/sectionS2.Rnw}
-
-\newpage
-\section{Supplementary S3}
-\SweaveInput{./sections/sectionS3.Rnw}
-
-\newpage
-\section{Supplementary S4}
-\SweaveInput{./sections/sectionS4.Rnw}
+\section{Supplementary Table S5}
+\SweaveInput{./sections/sectionT5.Rnw}
 
 \bigskip   % leave some empty space (optional)
 
