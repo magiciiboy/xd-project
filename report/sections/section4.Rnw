@@ -1,1 +1,10 @@
 % !Rnw root = ../ProjectReport.Rnw
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=12cm, height=18cm]{Figure4.png}
+  \caption{Descriptive statistics of the career dataset}
+  \label{Fig4}
+\end{figure}
+
+Regression coefficients from Equation 1 were standardized and are presented with error bars indicating standard error. Prior to regression analysis, dummy variables were created for researcher discipline, as well as the five year period in which they published their first genomic publication. Zero's in the dataset (except for in dummy variables) were replaced by 0.00001 in order to allow for logarithmic transformations to be applied to appropriate numeric variables. The location which the information was derived from is indicated by the labels above the plot, with "CV" indicating the information was collected from the researcher's CV and "Network" indicating that the information originated from the researcher's collaboration network. Standardized beta coefficients are shown, to aid with the comparison across covariates. The plot shows the impact of changes in covariate, by showing the change in the dependant variable if the covariate were alterred by one standard deviation. "***" symbols were inserted above the covariates which showed statistical significance where the p-value was less than or equal to 0.001. The significant results indicate a covariate which impacts the dependant variable to a degree of statistical significance when alterred by one standard deviation.
