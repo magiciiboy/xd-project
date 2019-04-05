@@ -2,7 +2,7 @@
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=12cm, height=18cm]{Figure4.png}
+  \includegraphics[width=12cm, height=10cm]{Figure4.png}
   \caption{Career cross-sectional regression model}
   \label{Fig4}
 \end{figure}

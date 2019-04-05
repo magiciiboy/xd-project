@@ -1,12 +1,12 @@
 % !Rnw root = ../ProjectReport.Rnw
 \begin{table}[h]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{4cm}|p{13cm}|}
 \hline
 \textbf{Member} & \textbf{Contribution} \\ \hline
-Bradley Macdonald & Preprocess data and create regression models of Figure 4\\ \hline
-Tung Huynh & Preprocess Data, create regression models of Table S4, Table S5\\ \hline
+Bradley Macdonald & Analyze regression models of Figure 4\\ \hline
+Tung Huynh & Preprocess Data, create regression models of Table S2, Table S3\\ \hline
 Yifan Zhang & Preprocess Data, and draw plot of Figure 4 \\ \hline
 \end{tabular}
-\caption{Contribution of group members}
+\caption{Contribution of group members of the second milestone}
 \label{tbl:contribution}
 \end{table}
