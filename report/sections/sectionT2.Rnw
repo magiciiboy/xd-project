@@ -1,6 +1,11 @@
 % !Rnw root = ../ProjectReport.Rnw
+\hspace{0.5cm}This table shows the detail estimates for 3 models specified in Eq. (1). While in $CV$ models, 4,190 $F_i$ are taken into account to build the models, only 3,900 $F_i$ having network attributes, e.g. centrality, cross-disciplinary orientation, are used in the two $CV + Network$ models. In all models, most of the estimates have a significant confidence level except for the total amount of NSF $\beta_{\$1}$ fund and the number of NSF grants $\beta_{N1}$. In the $CV$ model, productivity index $\beta_{h}$ shows the most import impact on the increase of authors' citations. And even after removing 290 observation having not network attributes, its impact still keeps consistent and homogenous with a high confidence level. In the $CV + Network$ models, the positive value of $\beta_{\chi}$, the cross-disciplinary ratio ranging from 0.0 to 1.0, indicates the correlation with the career citations. With 0.1 elevation of $\chi$ correlates to 5.67\% increase in citations $C_i$. Therefore, the authors having greater $\chi_i$ will have a higher citation in the network.\\
+\bigskip
+
 \begin{table}[h]
+\caption{Career data set: Poolel cross-sectional model}
 \begin{tabular}{m{5cm} m{1.5cm} m{1.5cm} m{1.5cm} m{1.5cm} p{1.5cm} p{1.5cm} }
+\\
 \hline
 \hline
 & \multicolumn{2}{c}{\textbf{CV}} & \multicolumn{2}{c}{\textbf{CV + Network}} & \multicolumn{2}{c}{\textbf{CV + Network [Standardized]}} \\ \hline
@@ -13,10 +18,10 @@
 {\# of NIH grants, $\beta_{N2}$}      & -0.062***  & (0.016) & -0.054**   & (0.017) & -0.060**    & (0.018) \\ \hline
 
 \multicolumn{7}{l}{\textbf{Network parameters}} \\
-{PageRank Centrality, $\beta_{\zeta PR}$}   &  &            & 0.041**     & (0.014) & 0.026**   & (0.009) \\
+{PageRank Centrality, $\beta_{\mathscr{C}^{PR}}$}   &  &            & 0.041**     & (0.014) & 0.026**   & (0.009) \\
 {Cross-displinary, $\beta_{\chi}$}       &  &            & 0.567***    & (0.061) & 0.085***  & (0.009) \\ \hline
 
-{Discipline ($O$) dummy}                & Y &  & Y &  & Y &  \\
+{Discipline ($\mathscr{O}$) dummy}                & Y &  & Y &  & Y &  \\
 {5-year cohort ($y_{i,5^0}$) dummy}   & Y &  & Y &  & Y & \\
 {Constant}                            & 1.400*** & (0.233) & 1.708*** & (0.271) & 7.743*** & (0.216) \\ \hline
 
@@ -25,9 +30,6 @@
 \multicolumn{7}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
 
 \end{tabular}
-\caption{Career data set: Poolel cross-sectional model}
 \label{tbl:sT2}
 \end{table}
-
-This table shows the detail estimates for 3 models specified in Eq. (1). While in $CV$ models, 4,190 $F_i$ are taken into account to build the models, only 3,900 $F_i$ having network attributes, e.g. centrality, cross-disciplinary orientation, are used in the two $CV + Network$ models. In the $CV + Network$ models, the positive value of $\beta_{\chi}$, the cross-disciplinary ratio ranging from 0.0 to 1.0, indicates the correlation with the career citations. With 0.1 elevation of $\chi$ correlates to 5.67\% increase in citations $C_i$. Therefore, the authors having greater $\chi_i$ will have a higher citation in the network.
 

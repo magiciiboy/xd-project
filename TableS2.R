@@ -3,9 +3,9 @@
 library(sjstats)
 library(plm)
 library(dplyr)
-ZERO_REPLACEMENT_CONSTANT <- 1
-ZERO_REPLACEMENT_CONSTANT_NUM <- 1
-ZERO_REPLACEMENT_CONSTANT_AMT <- 1
+ZERO_REPLACEMENT_CONSTANT <- 1      # 0.1, 0.01, 0.0001
+ZERO_REPLACEMENT_CONSTANT_NUM <- 1  # 0.1, 0.01, 0.0001
+ZERO_REPLACEMENT_CONSTANT_AMT <- 1  # 0.1, 0.01, 0.0001
 
 dat <- read.csv('./data/Faculty_GoogleScholar_Funding_Data_N4190.csv')
 
