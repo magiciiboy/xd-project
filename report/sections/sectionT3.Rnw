@@ -1,4 +1,13 @@
 % !Rnw root = ../ProjectReport.Rnw
+\par
+The below table displays the estimates values of variant models used to test the robustness of the cross-sectional model. In the first three variants, $Page Rank$, $Betweeness$ and $Degree$ are used as centrality measure alternatively. The authors having no centrality measure are eliminated from the model. In the fourth variant, the number of NSF grants and the number of NIH grants are eliminated due to the suspect of high correlation with the total amount of the corresponding fund. And in the last variant, the school rank is omitted from the model because this value only indicates the prominence effect of the school in recent years.
+
+As extracted from the table, in all variants, the difference between the output estimate values from each model is not significant and even equal in some models. This test demonstrates the robustness of the cross-sectional model. In addition, high productivity index $\beta_h$ obviously has a high positive impact on the career of the authors.
+
+In the variants (d) and (e), after removing variables of the number of grants and school rank correspondingly, the cross-sectional model still remains robust. This robustness proves the assumption that the number of grants having correlation effect with the total amount of fund and school rank does not indicate the success of authors' career accurately. 
+
+Besides, while the estimates of the total amount of funds $\beta_{\$2}$ are positive correlate to the citations, the number of grants $\beta_{N2}$ has a negative correlation. This observation may be due to the effect of fund management.
+
 \begin{table}[h]
 \begin{tabular}{m{5cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} }
 \hline

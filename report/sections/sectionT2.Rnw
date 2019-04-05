@@ -28,3 +28,6 @@
 \caption{Career data set: Poolel cross-sectional model}
 \label{tbl:sT2}
 \end{table}
+
+This table shows the detail estimates for 3 models specified in Eq. (1). While in $CV$ models, 4,190 $F_i$ are taken into account to build the models, only 3,900 $F_i$ having network attributes, e.g. centrality, cross-disciplinary orientation, are used in the two $CV + Network$ models. In the $CV + Network$ models, the positive value of $\beta_{\chi}$, the cross-disciplinary ratio ranging from 0.0 to 1.0, indicates the correlation with the career citations. With 0.1 elevation of $\chi$ correlates to 5.67\% increase in citations $C_i$. Therefore, the authors having greater $\chi_i$ will have a higher citation in the network.
+
