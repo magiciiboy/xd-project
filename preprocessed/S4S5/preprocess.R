@@ -1,4 +1,5 @@
 library(data.table)
+library(stringr)
 
 df_scholars = fread('./data/Faculty_GoogleScholar_Funding_Data_N4190.csv',
                     sep=",",
@@ -12,7 +13,7 @@ df_scholars = fread('./data/Faculty_GoogleScholar_Funding_Data_N4190.csv',
                                  "character", "numeric")
                     )
 df_papers = fread('./data/GoogleScholar_paper_stats.csv',
-                  col.names = c('i', 't', 'c', 'coauthors'),
+                  col.names = c('google_id', 'year', 'citations', 'co_authors'),
                   sep=",",
                   header=FALSE,
                   strip.white=TRUE,
@@ -33,8 +34,47 @@ idx = 0
 
 # Map scholars to dict
 scholars = vector(mode="list")
-for (index in nrow(df_scholars)) {
-  scholars[[ df_scholars[[1,"google_id"]] ]] = s_row
+for ( index in 1:nrow(df_scholars) ) {
+  scholars[[ df_scholars[[index,"google_id"]] ]] = df_scholars[index,]
 }
+
+
+compute_logc = function(p) {
+  if(is.null(p[["c"]])) {
+    return( log(1) )
+  } else {
+    return( log(1 + p[["c"]] ) )
+  }
+}
+
+compute_dept = function(p) {
+  return( scholars[[ p[['i']] ]][['dept']] )
+}
+
+count_comma = function(str) {
+  return ( str_count(str, ",") + 1 )
+}
+
+
+print('Computing dept ...')
+paper_index_in_scholar = match( df_papers[["google_id"]], df_scholars[["google_id"]] )
+print( sum( is.na(paper_index_in_scholar) ) ) # check na
+
+df_papers[["dept"]] = df_scholars[["dept"]][paper_index_in_scholar]
+
+
+print('Computing a ...')
+df_papers[["a"]] = lapply( df_papers[["co_authors"]], count_comma )
+
+
+print('Computing tau ...')
+career_start = df_scholars[["min_year"]][paper_index_in_scholar]
+df_papers[["tau"]] = df_papers[["year"]] - career_start + 1
+
+
+print('Computing I ...')
+
+
+
 
 

@@ -137,8 +137,8 @@ print(df_papers.columns)
 
 df_papers_xd = df_papers[df_papers['XD']==1]
 
-df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
-df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
+# df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
+# df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
 
 
 
