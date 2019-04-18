@@ -124,7 +124,7 @@ print('Computing PR ...')
 df_papers['PR'] = df_papers.apply(lambda row: compute_pagerank(row), axis=1)
 
 print('Computing Bridge ratio ...')
-df_papers['lamda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
+# df_papers['lamda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
 
 print('Computing z-score ...')
 df_papers['z'] = df_papers.apply(lambda row: compute_z_score(row), axis=1)
