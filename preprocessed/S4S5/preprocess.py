@@ -124,7 +124,7 @@ print('Computing PR ...')
 df_papers['PR'] = df_papers.apply(lambda row: compute_pagerank(row), axis=1)
 
 print('Computing Bridge ratio ...')
-df_papers['lamda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
+# df_papers['lamda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
 
 print('Computing z-score ...')
 df_papers['z'] = df_papers.apply(lambda row: compute_z_score(row), axis=1)
@@ -137,8 +137,8 @@ print(df_papers.columns)
 
 df_papers_xd = df_papers[df_papers['XD']==1]
 
-df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
-df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
+# df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
+# df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
 
 
 
