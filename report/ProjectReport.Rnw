@@ -58,6 +58,14 @@
 \section{Supplementary Table S3}
 \SweaveInput{./sections/sectionT3.Rnw}
 
+\newpage
+\section{Supplementary Table S4}
+\SweaveInput{./sections/sectionT4.Rnw}
+
+\newpage
+\section{Supplementary Table S5}
+\SweaveInput{./sections/sectionT5.Rnw}
+
 \bigskip   % leave some empty space (optional)
 
 \end{document}

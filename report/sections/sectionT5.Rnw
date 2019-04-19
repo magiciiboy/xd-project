@@ -1,19 +1,19 @@
 % !Rnw root = ../ProjectReport.Rnw
-\begin{table}[h]
+\begin{table}[H]
 \begin{tabular}{m{5cm} m{3.0cm} m{3cm} m{2.5cm} m{2.7cm}}
 \hline
 \hline
 & \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
 \multicolumn{5}{l}{\textbf{Publication characteristics}} \\
 \rowcolor{lightgray}
-{\# of author, $\beta_\alpha$} & x1 & x2 & 0.351*** & 0.234*** \\
-                             & (x1) & (x2) & (0.00392) & (0.0059) \\
+{\# of author, $\beta_\alpha$} & x1 & x2 & 0.351*** & 0.252*** \\
+                             & (x1) & (x2) & (0.00392) & (0.00282) \\
 \rowcolor{lightgray}
-{Career age, $\beta_\tau$} & x1 & x2 & -0.00617* & -0.00636* \\
-                         & (x1) & (x2) & (0.00253) & (0.00261) \\
+{Career age, $\beta_\tau$} & x1 & x2 & -0.00617* & -0.0663* \\
+                         & (x1) & (x2) & (0.00253) & (0.0271) \\
 \rowcolor{lightgray}
 {Cross-disciplinary indicator, $\beta_I$} & x1 & x2 &  0.112*** & 0.112*** \\
-                                        & (x1) & (x2) & (0.01628) & (0.01628) \\ \hline
+                                        & (x1) & (x2) & (0.0162) & (0.0162) \\ \hline
 \multicolumn{5}{l}{\textbf{Network characteristics}} \\
 \rowcolor{lightgray}
 {Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
@@ -25,8 +25,8 @@
 {Discipline ($F$) dummy}     & x1 & x2 & X & X \\
                              & (x1) & (x2) & & \\
 \rowcolor{lightgray}
-{Constant}                 & x1 & x2 & ??? & ??? \\
-                         & (x1) & (x2) & (???) & (???) \\
+{Constant}                 & x1 & x2 & -0.408*** & -0.0370* \\
+                         & (x1) & (x2) & (0.0778) & (0.0285) \\
 \rowcolor{lightgray}
 {Year dummy}            & Y & Y & Y & Y \\ \hline
 \rowcolor{lightgray}

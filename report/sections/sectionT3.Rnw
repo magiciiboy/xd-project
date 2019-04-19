@@ -7,7 +7,7 @@ In the variants (d) and (e), after removing variables of the number of grants an
 
 Besides, while the estimates of the total amount of funds $\beta_{\$2}$ are positive correlate to the citations, the number of grants $\beta_{N2}$ has a negative correlation. This observation may be due to the effect of fund management.
 
-\begin{table}[h]
+\begin{table}[H]
 \caption{Career data set: Poolel cross-sectional model - Robustness check}
 \begin{tabular}{m{5cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} p{2.1cm} }
 \\

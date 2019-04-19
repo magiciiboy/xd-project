@@ -28,15 +28,18 @@ std_beta(model_NoFE)
 # summary(model_NoFE_std)
 
 # Model: FE
-model_FE <- plm(z ~ ln_a + tau + I + factor(t), data=dat, index=c("i", "X"), model="within", effect="individual")
+model_FE <- plm(z ~ ln_a + tau + I + factor(t), data=dat, index=c("i"), model="within", effect="individual")
 summary(model_FE)
-interception_FE <- mean(fixef(model_FE))
-print(paste0('Interception: ', interception_FE))
+within_intercept(model_FE)
 
 # Model: FE (Standardized)
-model_FE_std <- plm(scale(z) ~ scale(ln_a) + scale(tau) + scale(I), data=dat, index=c("i", "X"), model="within", effect="individual")
-summary(model_FE_std)
+dat <- dat %>% mutate(ln_a_scaled=scale(dat$ln_a),
+                      tau_scaled=scale(dat$tau),
+                      I_scaled=scale(dat$I))
 
+model_FE_std <- plm(z ~ ln_a_scaled + tau_scaled + I + factor(t), data=dat, index=c("i"), model="within", effect="individual")
+summary(model_FE_std)
+within_intercept(model_FE_std)
 
 # RESULTS:
 
