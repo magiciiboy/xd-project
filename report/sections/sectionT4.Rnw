@@ -6,33 +6,33 @@
 & \textbf{No Fixed Effects} & \textbf{No Fixed Effects [Standardized]} & \textbf{Fixed Effects} & \textbf{Fixed Effects [Standardized]} \\ \hline
 \multicolumn{5}{l}{\textbf{Publication characteristics}} \\
 \rowcolor{lightgray}
-{\# of author, $\beta_\alpha$} & x1 & x2 & 0.312*** & 0.2061*** \\
-                             & (x1) & (x2) & (0.00262) & (0.00173) \\
+{\# of author, $\beta_\alpha$} & 0.2836*** & 0.1872*** & 0.312*** & 0.2061*** \\
+                             & (0.0025) & (0.0016) & (0.00262) & (0.00173) \\
 \rowcolor{lightgray}
-{Career age, $\beta_\tau$} & x1 & x2 & -0.00949*** & -0.0971*** \\
-                         & (x1) & (x2) & (0.00156) & (0.01601) \\
+{Career age, $\beta_\tau$} & -0.00547*** & -0.0560*** & -0.00949*** & -0.0971*** \\
+                         & (0.0002) & (0.0018) & (0.00156) & (0.01601) \\
 \rowcolor{lightgray}
-{Cross-disciplinary indicator, $\beta_I$} & x1 & x2 & 0.1453*** & 0.1453*** \\
-                                        & (x1) & (x2) & (0.01578) & (0.01578) \\ \hline
+{Cross-disciplinary indicator, $\beta_I$} & 0.1259*** & 0.1259*** & 0.1453*** & 0.1453*** \\
+                                        & (0.0157) & (0.0157) & (0.01578) & (0.01578) \\ \hline
 \multicolumn{5}{l}{\textbf{Network characteristics}} \\
 \rowcolor{lightgray}
-{Author centrality, $\beta_\zeta$} & x1 & x2 & X & X \\
-                             & (x1) & (x2) &  &  \\
+{Author centrality, $\beta_\zeta$} & 0.0440*** & 0.0284*** & X & X \\
+                             & (0.0029) & (0.0018) &  &  \\
 \rowcolor{lightgray}
-{Bridge ratio, $\beta_\lambda$} & x1 & x2 & X & X \\
-                             & (x1) & (x2) &  &  \\
+{Bridge ratio, $\beta_\lambda$} & 0.3338*** & 0.1210*** & X & X \\
+                             & (0.0055) & (0.0020) &  &  \\
 \rowcolor{lightgray}
-{Discipline ($F$) dummy}     & x1 & x2 & X & X \\
-                             & (x1) & (x2) & &  \\
+{Discipline ($F$) dummy}     & 0.00790* & 0.0079* & X & X \\
+                             & (0.0033) & (0.0033) & &  \\
 \rowcolor{lightgray}
-{Constant}                 & x1 & x2 & -0.2932*** & -0.0669** \\
-                         & (x1) & (x2) & (0.0456) & (0.0176) \\
+{Constant}                 & 0.4586*** & 0.1638* & -0.2932*** & -0.0669** \\
+                         & (0.0761) & (0.0728) & (0.0456) & (0.0176) \\
 \rowcolor{lightgray}
 {Year dummy}            & Y & Y & Y & Y \\ \hline
 \rowcolor{lightgray}
 {n}                      & 413,565 & 413,565 & 413,565 & 413,565 \\
 \rowcolor{lightgray}
-{adj. $R^2$}             & x1 & x2 & 0.036 & 0.036 \\ \hline \hline
+{adj. $R^2$}             & 0.055 & 0.055 & 0.036 & 0.036 \\ \hline \hline
 \multicolumn{5}{l}{\footnotesize{Standard errors in parentheses below estimate * p $\leq$ 0.05, ** p $\leq$ 0.01, *** p $\leq$ 0.0001}}
 
 \end{tabular}

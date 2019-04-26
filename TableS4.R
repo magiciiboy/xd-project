@@ -4,7 +4,7 @@ library(sjstats)
 library(plm)
 library(dplyr)
 
-dat <- read.csv('./preprocessed/S4S5/panel_model_paper_citations_data_all.csv')
+dat <- read.csv('./preprocessed/S4S5/panel_model_paper_citations_data_all_A.csv')
 
 print(colnames(dat))
 print(nrow(dat))
@@ -12,20 +12,21 @@ head(dat)
 
 # Remove row having NA (Ex: pagerank). Only keep 3900 nodes in the network.
 dat <- na.omit(dat)
+dat <- dat %>% filter(PR > 0)
 
 print(nrow(dat))
 
 # summary(dat)
 # str(dat)
 # Model: No FE
-model_NoFE <- lm(z ~ ln_a + tau + I + factor(t) + PR + lamda + factor(dept), data=dat)
+model_NoFE <- lm(z ~ log(a) + tau + I + factor(t) + log(PR) + log(lambda) + factor(dept), data=dat)
 summary(model_NoFE)
 
 # Model: No FE (Standardized)
 std_beta(model_NoFE)
 # Or:
-# model_NoFE_std <- lm(scale(z) ~ scale(ln_a) + scale(tau) + scale(I) + factor(t) + scale(PR) + scale(lamda) + factor(dept), data=dat)
-# summary(model_NoFE_std)
+model_NoFE_std <- lm(z ~ scale(log(a)) + scale(tau) + I + factor(t) + scale(log(PR)) + scale(log(lambda)) + factor(dept), data=dat)
+summary(model_NoFE_std)
 
 # Model: FE
 model_FE <- plm(z ~ ln_a + tau + I + factor(t), data=dat, index=c("i"), model="within", effect="individual")
@@ -43,7 +44,25 @@ within_intercept(model_FE_std)
 
 # RESULTS:
 
-# Model: FE
+# MODEL: No FE
+# Coefficients:
+#                  Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)     0.4586253  0.0761092   6.026 1.68e-09 ***
+# log(a)          0.2835657  0.0024971 113.557  < 2e-16 ***
+# tau            -0.0054725  0.0001803 -30.349  < 2e-16 ***
+# I               0.1258561  0.0157782   7.977 1.51e-15 ***
+# (Removed)
+# log(PR)         0.0439591  0.0028638  15.350  < 2e-16 ***
+# log(lambda)     0.3337524  0.0055266  60.390  < 2e-16 ***
+# factor(dept)CS -0.0078901  0.0033126  -2.382  0.01723 *  
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Residual standard error: 0.9728 on 413513 degrees of freedom
+# Multiple R-squared:  0.0555,	Adjusted R-squared:  0.05538 
+# F-statistic: 476.4 on 51 and 413513 DF,  p-value: < 2.2e-16
+
+# MODEL: FE
 # Oneway (individual) effect Within Model
 # plm(formula = z ~ ln_a + tau + I + factor(t), data = dat, effect = "individual", 
 #     model = "within", index = c("i", "X"))

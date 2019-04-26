@@ -7,7 +7,7 @@ library(plm)
 library(dplyr)
 library(robustHD)
 
-dat <- read.csv('./preprocessed/S4S5/panel_model_paper_citations_data_xd.csv')
+dat <- read.csv('./preprocessed/S4S5/panel_model_paper_citations_data_xd_A.csv')
 
 print(colnames(dat))
 print(nrow(dat))
@@ -21,17 +21,18 @@ str(dat)
 nrow(dat)
 
 # Model: No FE
-model_NoFE <- lm(z ~ ln_a + tau + I + factor(t) + PR + lamda + factor(dept), data=dat)
+model_NoFE <- lm(z ~ log(a) + tau + I + factor(t) + log(PR) + log(lambda) + factor(dept), data=dat)
 summary(model_NoFE)
+anova(model_NoFE)
 coff <- coefficients(model_NoFE)
-print(coff['PR'])
-print(coff['lamda'])
+print(coff)
+print(coff)
 
 # Model: No FE (Standardized)
-std_beta(model_NoFE)
+model_NoFE_std <- std_beta(model_NoFE)
 # Or:
-# model_NoFE_std <- lm(scale(z) ~ scale(ln_a) + scale(tau) + scale(I) + factor(t) + scale(PR) + scale(lamda) + factor(dept), data=dat)
-# summary(model_NoFE_std)
+model_NoFE_std <- lm(z ~ scale(log(a)) + scale(tau) + I + factor(t) + scale(log(PR)) + scale(log(lambda)) + factor(dept), data=dat)
+summary(model_NoFE_std)
 
 # Model: FE
 # lmer 
@@ -49,12 +50,27 @@ summary(model_FE_std)
 within_intercept(model_FE_std)
 
 # RESULTS:
-# Model: Non FE
-#                        Estimate Std. Error t value Pr(>|t|)    
-# (Intercept)           -0.820509   0.750937  -1.093 0.274550    
-# ln_a                   0.351202   0.003920  89.590  < 2e-16 ***
-# tau                    0.034904   0.020317   1.718 0.085806 .  
-# I                      0.112352   0.016287   6.898 5.28e-12 ***
+
+# MODEL: Non-FE
+# Coefficients:
+#                  Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)     0.2112594  0.1235853   1.709   0.0874 .  
+# log(a)          0.3289664  0.0037452  87.836  < 2e-16 ***
+# tau            -0.0049901  0.0002831 -17.629  < 2e-16 ***
+# I               0.1094870  0.0164527   6.655 2.85e-11 ***
+# (Removed)
+# log(PR)         0.0526377  0.0045944  11.457  < 2e-16 ***
+# log(lambda)     0.3192465  0.0091932  34.726  < 2e-16 ***
+# factor(dept)CS  0.0383185  0.0052122   7.352 1.97e-13 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Residual standard error: 0.9995 on 166569 degrees of freedom
+# Multiple R-squared:  0.06771,	Adjusted R-squared:  0.06743 
+# F-statistic: 237.2 on 51 and 166569 DF,  p-value: < 2.2e-16
+
+
+# MODEL: Non-FE (std)
 
 
 # MODEL: FE

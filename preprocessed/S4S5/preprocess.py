@@ -3,7 +3,7 @@ import math
 from statistics import stdev, mean
 import pandas as pd
 
-df_scholars = pd.read_csv('../../data/Faculty_GoogleScholar_Funding_Data_N4190.csv')
+df_scholars = pd.read_csv('../../data/Faculty_Googlescholar_lambda_mu_N4190.csv')
 df_papers = pd.read_csv('../../data/GoogleScholar_paper_stats.csv', names=['i', 't', 'c', 'coauthors'])
 
 shape_scholars = df_scholars.shape  # (4190, 25)
@@ -11,7 +11,6 @@ shape_papers = df_papers.shape      # (424827, 4)
 
 df_papers_2017 = df_papers[df_papers['t'] <= 2017]
 # print(df_papers_2017.shape)
-
 # print(df_scholars.columns)
 
 # Cached mu, sigma for y,t
@@ -30,13 +29,7 @@ def compute_dept(p):
     return scholars[p['i']]['dept']
 
 def compute_z_score(p):
-    # global idx
-    # idx += 1
-    # if idx % 1000:
-    #     print ("- Percentage: %s %") % (idx / shape_papers[0] * 100)
-
     c_ipst = p['c']
-    i = p['i']
     t = p['t']
     s = p['dept']
 
@@ -45,7 +38,7 @@ def compute_z_score(p):
     if str_st in cached_mu_sigma:
         (mu_t, sigma_t) = cached_mu_sigma[str_st]
     else:
-        df_papers_st = df_papers[(df_papers['dept']==s) & (df_papers['t']==t)]
+        df_papers_st = df_papers[(df_papers['dept']==s) & (df_papers['t']==t)].copy()
         df_papers_st['ln_c'] = df_papers_st.apply(lambda row: compute_logc(row), axis=1)
 
         mu_t = df_papers_st['ln_c'].mean()
@@ -73,7 +66,6 @@ def compute_paper_orientation(p):
     coauthors = (p.get('coauthors') or '').split(',')
     dept_map = {'CS': '1', 'BIO': '0'}
     depts = []
-    o = 0
     for a in coauthors:
         if a not in ['0', '1', '2']:
             a_dept = scholars[a]['dept']
@@ -86,20 +78,18 @@ def compute_paper_orientation(p):
 
 def compute_scholar_xd(p):
     gid = p['i']
-    return 1 if scholars[gid]['XDIndicator'] == 'XD' else 0
+    # return 1 if scholars[gid]['XDIndicator'] == 'XD' else 0
+    return 1 if scholars[gid]['XDGSREFINED'] == 'XD' else 0
 
 def compute_pagerank(p):
     gid = p['i']
     pr = scholars[gid]['PRCentrality']
-    return math.log(pr) if pr else None
+    return pr
 
 def compute_bridge_ratio(p):
     gid = p['i']
-    ratio = 0.0001
-    if scholars[gid].get('KTotal') and scholars[gid].get('KMediated'):
-        ratio = scholars[gid]['KMediated'] / scholars[gid]['KTotal']
-        print('Ratio', ratio)
-    return math.log(ratio)
+    ratio = scholars[gid]['Lambda'] or 0.00000001
+    return ratio
 
 # Add new column to process papers data
 print('Computing dept ...')
@@ -124,7 +114,7 @@ print('Computing PR ...')
 df_papers['PR'] = df_papers.apply(lambda row: compute_pagerank(row), axis=1)
 
 print('Computing Bridge ratio ...')
-# df_papers['lamda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
+df_papers['lambda'] = df_papers.apply(lambda row: compute_bridge_ratio(row), axis=1)
 
 print('Computing z-score ...')
 df_papers['z'] = df_papers.apply(lambda row: compute_z_score(row), axis=1)
@@ -137,8 +127,8 @@ print(df_papers.columns)
 
 df_papers_xd = df_papers[df_papers['XD']==1]
 
-# df_papers.to_csv('./panel_model_paper_citations_data_all.csv')
-# df_papers_xd.to_csv('./panel_model_paper_citations_data_xd.csv')
+df_papers.to_csv('./panel_model_paper_citations_data_all_A.csv')
+df_papers_xd.to_csv('./panel_model_paper_citations_data_xd_A.csv')
 
 
 

@@ -12,3 +12,12 @@ Cross-disciplinary evolution of the genomics revolution
 `/output`: graph output
 
 `/report`: Sweave report
+
+
+# S6:
+Select randomly 1000 / all author. Non-parametric.
+Student distribution.
+
+
+
+
