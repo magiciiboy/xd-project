@@ -1,4 +1,4 @@
-### Plot figure 6A
+### Plot figure 6B
 library(ggplot2)
 library(grid)
 
@@ -34,8 +34,8 @@ plotA <- plotA +
 # Labels
 x_breaks <- c("5.0", "15.0", "25.0")
 x_labs <- c("Coauthors",
-             "Author age",
-             "Cross-disc."
+            "Author age",
+            "Cross-disc."
 )
 plotA <- plotA + scale_x_discrete(name="XXX", breaks=x_breaks, labels=x_labs)
 
@@ -63,12 +63,17 @@ plotA <- plotA + theme(legend.position=c(.5, .8))
 
 
 plotA <- plotA + scale_color_manual(values=c("blue", "black"),
-                                     name="All faculty, Fi",
-                                     breaks=c("blue", "black"),
-                                     labels=c("Fixed effects: Standardized variables", 
-                                                "Pooled: Standardized variables"))
+                                    name="All faculty, Fi",
+                                    breaks=c("blue", "black"),
+                                    labels=c("Fixed effects: Standardized variables", 
+                                             "Pooled: Standardized variables"))
+
+plotA <- plotA +
+    xlab("") + ylab("Regression coeffcients")
 
 gt <- ggplot_gtable(ggplot_build(plotA))
 gt$layout$clip[gt$layout$name=="panel"] <- "off"
 grid.draw(gt)
 
+
+ggsave('./output/Figure5B.png', plot=gt, width = 9, height = 6, dpi = 120)
