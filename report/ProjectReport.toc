@@ -1,6 +1,6 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Contribution}{3}
 \contentsline {section}{\numberline {2}Figure 5}{4}
-\contentsline {section}{\numberline {3}Supplementary Table S4}{5}
-\contentsline {section}{\numberline {4}Supplementary Table S5}{6}
-\contentsline {section}{\numberline {5}Supplementary Table S6}{7}
+\contentsline {section}{\numberline {3}Supplementary Table S4}{6}
+\contentsline {section}{\numberline {4}Supplementary Table S5}{7}
+\contentsline {section}{\numberline {5}Supplementary Table S6}{8}

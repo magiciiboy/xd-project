@@ -37,7 +37,7 @@
 
 \end{tabular}
 \caption{Career data set: Panel model on all $XD_F$ falcuty}
-\label{tbl:sT5}
+\label{tbl:sT5x}
 \end{table}
 
-In order to conduct a robustness check for the panel model, all ℱ𝑖 with XD orientation (n = 1247) were included. The stricter inclusion criteria for this model appears to have impacted the effect of the characteristics included in the panel model when compared to the results in Table S4. Although all characteristics still appear to have a significant impact on the impact which researchers in the data set have on the body of genomics literature, some of these effects appear to be diminished in the new model. The p-values associated with the different models for Career age and Author centrality are no longer less than or equal to 0.001. This perhaps means that the impact of XD publications on the literature is not as dependent on these two characteristics. 
+In order to conduct a robustness check for the panel model, all $F_i$  with XD orientation (n = 1247) were included. The stricter inclusion criteria for this model appears to have impacted the effect of the characteristics included in the panel model when compared to the results in Table S4. Although all characteristics still appear to have a significant impact on the impact which researchers in the data set have on the body of genomics literature, some of these effects appear to be diminished in the new model. The p-values associated with the different models for Career age and Author centrality are no longer less than or equal to 0.001. This perhaps means that the impact of XD publications on the literature is not as dependent on these two characteristics. 
