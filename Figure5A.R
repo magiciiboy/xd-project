@@ -56,6 +56,9 @@ plotA <- plotA +
     annotation_custom(grob = tg,  xmin = 24, xmax = 24, ymin = 0.25, ymax = 0.25) + 
     annotation_custom(grob = tg,  xmin = 26, xmax = 26, ymin = 0.25, ymax = 0.25)
 
+plotA <- plotA +
+    xlab("") + ylab("Regression coeffcients")
+
 # Legend
 plotA <- plotA + theme(legend.position=c(.5, .75), legend.title=element_text(size=10))
 
@@ -70,3 +73,4 @@ gt <- ggplot_gtable(ggplot_build(plotA))
 gt$layout$clip[gt$layout$name=="panel"] <- "off"
 grid.draw(gt)
 
+ggsave('./output/Figure5A.png', plot=gt, width = 9, height = 6, dpi = 120)
