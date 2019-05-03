@@ -10,11 +10,11 @@
   \endminipage\hfill
   \minipage{0.5\textwidth}
     \textbf{C}\\
-    \includegraphics[width=9.3cm, height=7cm]{5A.png}
+    \includegraphics[width=9.3cm, height=7cm]{Figure5C.png}
   \endminipage\hfill
   \minipage{0.5\textwidth}%
     \textbf{D}\\
-    \includegraphics[width=9.3cm, height=7cm]{5B.png}
+    \includegraphics[width=9.3cm, height=7cm]{Figure5D.png}
   \endminipage
   \caption{Career panel regression model}
   \label{fig:5}
