@@ -6,7 +6,7 @@ library(robustHD)
 library(data.table)
 library(fastmatch)
 
-dat <- fread("./preprocessed/S4S5/panel_model_paper_citations_data_all_A.csv")
+dat <- fread("./preprocessed/S4S5/panel_model_paper_citations_data_XD_A.csv")
 
 dat$t = as.numeric(dat$t)
 dat$a = as.numeric(dat$a)
@@ -52,7 +52,7 @@ for (i in 1:nrow(uniq_author)) {
     uniq_author$sel[i] = sum(r$n_pair > 0)
 }
 
-sum( uniq_author$sel > 0 )
+sum( uniq_author$sel >= 10 )
 
 
 
