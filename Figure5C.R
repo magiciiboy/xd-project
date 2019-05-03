@@ -38,18 +38,18 @@ plotC = plotC + geom_histogram( aes(x=x, stat(ndensity)), bins = 40, color="blac
 
 
 plotC = plotC +
-    annotate("text", x = -0.06, y = 0.5, label = "Placebo Model", size = 6, angle = 90) +
-    annotate("text", x = -0.05, y = 0.5, label = "95% CI=(-0.027, 0.029)", size = 5, angle = 90) +
+    annotate("text", x = -0.06, y = 0.5, label = "Placebo Model", size = 4.5, angle = 90) +
+    annotate("text", x = -0.05, y = 0.5, label = "95% CI=(-0.027, 0.029)", size = 3, angle = 90) +
     annotate("text", x = 0.07, y = 1.1, label = "All Fi", size = 5) +
-    annotate("text", x = 0.14, y = 0.5, label = expression(beta[i]==0.145), size = 6, angle = 90, color="blue") +
-    annotate("text", x = 0.15, y = 0.5, label = "95% CI=(0.10, 0.19)", size = 5, angle = 90, color="blue")
+    annotate("text", x = 0.14, y = 0.5, label = expression(beta[i]==0.145), size = 4, angle = 90, color="blue") +
+    annotate("text", x = 0.15, y = 0.5, label = "95% CI=(0.10, 0.19)", size = 3, angle = 90, color="blue")
 
     
-plotC = plotC + theme_light() +
-        theme(axis.text.x = element_text(size=16, face="bold", margin=unit(c(20,20,20,20), "pt") ),
-              axis.text.y = element_text(size=16, face="bold", margin=unit(c(20,20,20,20), "pt") ),
-              axis.title = element_text(size=16, face="bold" ),
-              plot.margin = unit(c(6,2,2,2), "lines"),
+plotC = plotC + theme_bw() +
+        theme(axis.text.x = element_text(size=12, face="bold", margin=unit(c(14,14,0,10), "pt") ),
+              axis.text.y = element_text(size=12, face="bold", margin=unit(c(14,14,0,10), "pt") ),
+              axis.title = element_text(size=12, face="bold" ),
+              plot.margin = unit(c(2,2,2,2), "lines"),
               panel.grid.major = element_blank(),
               panel.grid.minor = element_blank(),
               axis.ticks.length=unit(-10, "pt")

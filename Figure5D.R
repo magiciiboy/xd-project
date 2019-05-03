@@ -36,18 +36,18 @@ plotC = plotC + geom_histogram( aes(x=x, stat(ndensity)), bins = 40, color="blac
 
 
 plotC = plotC +
-    annotate("text", x = -0.06, y = 0.5, label = "Placebo Model", size = 6, angle = 90) +
-    annotate("text", x = -0.05, y = 0.5, label = "95% CI=(-0.028, 0.028)", size = 5, angle = 90) +
+    annotate("text", x = -0.06, y = 0.5, label = "Placebo Model", size = 4.5, angle = 90) +
+    annotate("text", x = -0.05, y = 0.5, label = "95% CI=(-0.028, 0.028)", size = 3, angle = 90) +
     annotate("text", x = 0.07, y = 1.1, label = "Only XD Fi", size = 5) +
-    annotate("text", x = 0.105, y = 0.5, label = expression(beta[i]==0.112), size = 6, angle = 90, color="blue") +
-    annotate("text", x = 0.119, y = 0.5, label = "95% CI=(0.07, 0.16)", size = 5, angle = 90, color="blue")
+    annotate("text", x = 0.105, y = 0.5, label = expression(beta[I]==0.112), size = 4, angle = 90, color="blue") +
+    annotate("text", x = 0.119, y = 0.5, label = "95% CI=(0.07, 0.16)", size = 3, angle = 90, color="blue")
 
     
-plotC = plotC + theme_light() +
-        theme(axis.text.x = element_text(size=16, face="bold", margin=unit(c(20,20,20,20), "pt") ),
-              axis.text.y = element_text(size=16, face="bold", margin=unit(c(20,20,20,20), "pt") ),
-              axis.title = element_text(size=16, face="bold" ),
-              plot.margin = unit(c(6,2,2,2), "lines"),
+plotC = plotC + theme_bw() +
+        theme(axis.text.x = element_text(size=12, face="bold", margin=unit(c(14,14,0,10), "pt") ),
+              axis.text.y = element_text(size=12, face="bold", margin=unit(c(14,14,0,10), "pt") ),
+              axis.title = element_text(size=12, face="bold" ),
+              plot.margin = unit(c(2,2,2,2), "lines"),
               panel.grid.major = element_blank(),
               panel.grid.minor = element_blank(),
               axis.ticks.length=unit(-10, "pt")
@@ -55,5 +55,5 @@ plotC = plotC + theme_light() +
 
 plotC
 
-ggsave('./output/Figure5D.png', plot=plotC, width = 9, height = 6, dpi = 120)
+# ggsave('./output/Figure5D.png', plot=plotC, width = 9, height = 6, dpi = 120)
 
