@@ -23,30 +23,28 @@ df <- data.frame(
 plotA <- ggplot(df)
 
 # Pointranges
-plotA <- plotA + geom_pointrange(aes(x=x, y=coeff, ymin = lower, ymax = upper, group=group, colour=color), fatten = 5)
+plotA <- plotA + geom_point(aes(x=x, y=coeff, ymin = lower, ymax = upper, group=group, colour=color), fatten = 5)
 plotA <- plotA +
     geom_errorbar(aes(x=x, ymin = lower, ymax = upper, group=group, colour=color), width = 0.2) +
     geom_hline(yintercept=0, linetype=2) 
 
 # Axis Label
-# plotA <- plotA + xlab("") + ylab("Regression Coefficients")
-
-# Labels
-x_breaks <- c("5.0", "15.0", "25.0")
-x_labs <- c("Coauthors",
-             "Author age",
-             "Cross-disc."
+x_breaks <- c(5.0, 15.0, 25.0)
+x_labs <- c(expression("Coauthor," ~ bolditalic( beta[paste(alpha)] )),
+            expression("Author Age," ~ bolditalic( beta[paste(tau)] )),
+            expression("Cross disc.," ~ bolditalic( beta[paste("I")] ))
 )
-plotA <- plotA + scale_x_discrete(name="XXX", breaks=x_breaks, labels=x_labs)
-
-plotA
+plotA <- plotA + xlab("") + 
+        ylab((expression(atop("Regression", "coefficients")))) +
+        scale_x_continuous(breaks=x_breaks, labels=x_labs)
 
 # Themes
-plotA <- plotA + theme_light() +
-    theme(axis.text.x = element_text(size=16, face="bold",family="serif" ),
-          axis.text.y = element_text(size=16, face="bold" ),
-          axis.title = element_text(size=16, face="bold" ),
-          plot.margin = unit(c(6,2,2,2), "lines") ) 
+plotA <- plotA + theme_bw() +
+    theme(axis.text.x = element_text(size=12, face="bold" ),
+          axis.text.y = element_text(size=14, face="bold" ),
+          axis.title = element_text(size=14, face="bold" ),
+          plot.margin = unit(c(6,2,2,2), "lines") ) +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
 # Annotation: Significant level
 tg <- textGrob("***", rot = 90)
@@ -59,11 +57,11 @@ plotA <- plotA +
     annotation_custom(grob = tg,  xmin = 26, xmax = 26, ymin = 0.25, ymax = 0.25)
 
 # Legend
-plotA <- plotA + theme(legend.position=c(.5, .8))
+plotA <- plotA + theme(legend.position=c(.5, .75), legend.title=element_text(size=10))
 
 
 plotA <- plotA + scale_color_manual(values=c("blue", "black"),
-                                     name="All faculty, Fi",
+                                     name=expression("All faculty" ~ italic("F"[paste("i")])),
                                      breaks=c("blue", "black"),
                                      labels=c("Fixed effects: Standardized variables", 
                                                 "Pooled: Standardized variables"))
