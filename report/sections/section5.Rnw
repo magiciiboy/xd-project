@@ -1,0 +1,22 @@
+% !Rnw root = ../ProjectReport.Rnw
+\begin{figure}[!htb]
+  \minipage{0.5\textwidth}
+    \textbf{A}\\
+    \includegraphics[width=9.3cm, height=7cm]{5A.png}
+  \endminipage\hfill
+  \minipage{0.5\textwidth}%
+    \textbf{B}\\
+    \includegraphics[width=9.3cm, height=7cm]{5B.png}
+  \endminipage\hfill
+  \minipage{0.5\textwidth}
+    \textbf{C}\\
+    \includegraphics[width=9.3cm, height=7cm]{5A.png}
+  \endminipage\hfill
+  \minipage{0.5\textwidth}%
+    \textbf{D}\\
+    \includegraphics[width=9.3cm, height=7cm]{5B.png}
+  \endminipage
+  \caption{Career panel regression model}
+  \label{fig:2A}
+\end{figure}
+

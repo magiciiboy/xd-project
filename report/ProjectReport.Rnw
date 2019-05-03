@@ -44,19 +44,11 @@
 
 \newpage
 \section{Contribution}
-\SweaveInput{./sections/contribution2.Rnw}
+\SweaveInput{./sections/contribution3.Rnw}
 
 \newpage
-\section{Figure 4}
-\SweaveInput{./sections/section4.Rnw}
-
-\newpage
-\section{Supplementary Table S2}
-\SweaveInput{./sections/sectionT2.Rnw}
-
-\newpage
-\section{Supplementary Table S3}
-\SweaveInput{./sections/sectionT3.Rnw}
+\section{Figure 5}
+\SweaveInput{./sections/section5.Rnw}
 
 \newpage
 \section{Supplementary Table S4}
@@ -65,6 +57,10 @@
 \newpage
 \section{Supplementary Table S5}
 \SweaveInput{./sections/sectionT5.Rnw}
+
+\newpage
+\section{Supplementary Table S6}
+\SweaveInput{./sections/sectionT6.Rnw}
 
 \bigskip   % leave some empty space (optional)
 
