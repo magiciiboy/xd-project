@@ -18,7 +18,7 @@ print( nrow(dat) )
 xd_data = dat[ dat$I == 1, ]
 noxd_data = dat[ dat$I == 0, ]
 
-
+paired <- c()
 
 match_pair <- function(in_row) {
     id = in_row[["i"]]
@@ -31,11 +31,17 @@ match_pair <- function(in_row) {
     author_record = author_record[ author_record$t >= year-2 & author_record$t <= year+2 , ]
     # print(author_record)
     
-    ca_diff = abs( author_record$a - n_ca ) / n_ca < 0.2
+    ca_diff = abs( author_record$a - n_ca ) / n_ca <= 0.2
     author_record = author_record[ca_diff,]
+    author_record = author_record[!(author_record$V1 %in% paired), ]
     # print(author_record)
     n = nrow(author_record)
-    return( n )
+    
+    if (n > 0) {
+        paired <<- append(paired, author_record$V1[1])
+    }
+    # print(paired)
+    return( ifelse(n > 0, 1, 0) )
 }
 
 
